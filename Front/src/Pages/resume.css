@@ -1,0 +1,229 @@
+.resume-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.resume-text {
+  top: 17px;
+  left: 35px;
+  color: rgb(0, 102, 255);
+  width: var(--dl-size-size-medium);
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: italic;
+  text-align: center;
+  font-family: "Inter";
+  font-weight: 300;
+  line-height: 40px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.resume-text01 {
+  top: 60px;
+  left: 13px;
+  color: rgb(0, 102, 255);
+  width: var(--dl-size-size-xxlarge);
+  height: auto;
+  position: absolute;
+  font-size: 22px;
+  font-style: italic;
+  text-align: center;
+  font-family: "Inter";
+  font-weight: 300;
+  line-height: 40px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.resume-form {
+  left: 0px;
+  right: 0px;
+  width: 922px;
+  bottom: 0px;
+  height: 786px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  box-shadow: 5px 5px 10px 5px #636363;
+  background-color: #0066ff;
+}
+.resume-text02 {
+  top: 465px;
+  left: 510px;
+  width: var(--dl-size-size-medium);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 35px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 900;
+}
+.resume-form1 {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  position: absolute;
+  align-self: center;
+  border-color: var(--dl-color-gray-black);
+  border-style: groove;
+  border-width: 2px;
+}
+.resume-button {
+  top: 35px;
+  left: 450px;
+  position: absolute;
+  border-color: #ffffff;
+}
+.resume-text05 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+}
+.resume-button1 {
+  top: 37px;
+  color: #ffffff;
+  right: 60px;
+  width: 123px;
+  height: 56px;
+  position: absolute;
+  font-size: 20px;
+  background-color: #000000;
+}
+.resume-button2 {
+  top: 35px;
+  left: 534px;
+  position: absolute;
+  border-color: #ffffff;
+}
+.resume-text11 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+}
+.resume-button3 {
+  top: 35px;
+  left: 690px;
+  position: absolute;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  border-color: #ffffff;
+}
+.resume-button4 {
+  top: 35px;
+  left: 877px;
+  position: absolute;
+  font-size: 20px;
+  border-color: #ffffff;
+}
+.resume-text14 {
+  font-style: normal;
+  font-weight: 900;
+}
+.resume-button5 {
+  top: 35px;
+  left: 1027px;
+  position: absolute;
+  font-size: 20px;
+  border-color: #ffffff;
+}
+.resume-text17 {
+  font-style: normal;
+  font-weight: 900;
+}
+.resume-select {
+  top: 450px;
+  left: 0px;
+  right: 0px;
+  width: 290px;
+  height: 71px;
+  margin: auto;
+  position: absolute;
+  border-color: #0066ff;
+  border-width: 1px;
+}
+.resume-select1 {
+  top: 330px;
+  left: 0px;
+  right: 0px;
+  width: 290px;
+  height: 71px;
+  margin: auto;
+  position: absolute;
+  border-color: #0066ff;
+  border-width: 1px;
+}
+.resume-text20 {
+  top: 345px;
+  left: 467px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 35px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 900;
+}
+.resume-text23 {
+  top: 589px;
+  left: 510px;
+  width: var(--dl-size-size-medium);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 35px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 900;
+}
+.resume-textinput {
+  top: 770px;
+  left: 0px;
+  right: 0px;
+  width: 419px;
+  height: 109px;
+  margin: auto;
+  position: absolute;
+}
+.resume-text26 {
+  top: 708px;
+  left: 0px;
+  right: 0px;
+  width: var(--dl-size-size-maxwidth);
+  height: var(--dl-size-size-small);
+  margin: auto;
+  position: absolute;
+  font-size: 35px;
+  max-width: 350px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 900;
+}
+.resume-textinput1 {
+  top: 578px;
+  left: 0px;
+  right: 0px;
+  width: 327px;
+  height: 60px;
+  margin: auto;
+  position: absolute;
+}
+@media(max-width: 1200px) {
+  .resume-text {
+    top: 32px;
+    left: 60px;
+  }
+  .resume-text01 {
+    top: 32px;
+    left: 60px;
+  }
+  .resume-button1 {
+    top: 37px;
+    right: 82px;
+    position: absolute;
+  }
+}
