@@ -3,6 +3,7 @@ import React from 'react'
 import './search_resume.css'
 import { useNavigate } from 'react-router-dom';
 
+
 const Resumesearch = (props) => {
   const navigate = useNavigate();
 
@@ -23,6 +24,12 @@ const Resumesearch = (props) => {
   };
   const handleNotice = () => {
     navigate('/notice');
+  };
+  const handleSelectResume = () => {
+    navigate('/selectedResume');
+  };
+  const handleResumeResult = () => {
+    navigate('/resumeResult');
   };
   return (
     <div className="resumesearch-container">
@@ -62,23 +69,10 @@ const Resumesearch = (props) => {
           </svg>
         </div>
       </footer>
-      {/* <span className="resumesearch-text06">Teaming</span> */}
-      <textarea
-        placeholder="None"
-        className="resumesearch-textarea textarea"
-      ></textarea>
-      <textarea
-        placeholder="None"
-        className="resumesearch-textarea1 textarea"
-      ></textarea>
-      <textarea
-        placeholder="None"
-        className="resumesearch-textarea2 textarea"
-      ></textarea>
       <ul className="list"></ul>
       <form className="resumesearch-form"></form>
       <button type="button" className="resumesearch-button button" onClick={handleHome}>
-        <span className="resumesearch-text07">
+        <span className="resumesearch-text06">
           <span>홈</span>
           <br></br>
         </span>
@@ -90,7 +84,7 @@ const Resumesearch = (props) => {
         </span>
       </button>
       <button type="button" className="resumesearch-button2 button" onClick={handleSearchResume}>
-        <span className="resumesearch-text13">
+        <span className="resumesearch-text12">
           <span>이력서 검색</span>
           <br></br>
         </span>
@@ -99,17 +93,38 @@ const Resumesearch = (props) => {
         모집 공고 검색
       </button>
       <button type="button" className="resumesearch-button4 button" onClick={handleResume}>
-        <span className="resumesearch-text16">
+        <span className="resumesearch-text15">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
       <button type="button" className="resumesearch-button5 button" onClick={handleNotice}>
-        <span className="resumesearch-text19">
+        <span className="resumesearch-text18">
           <span>내 모집 공고</span>
           <br></br>
         </span>
       </button>
+      <button type="button" className="resumesearch-button6 button" onClick={handleResumeResult}>
+        <span className="resumesearch-text21">
+          <span>검색</span>
+          <br></br>
+        </span>
+      </button>
+      <form className="resumesearch-form1" onClick={handleSelectResume}>
+        <span className="resumesearch-text24">Project</span>
+        <span className="resumesearch-text25">Role</span>
+        <span className="resumesearch-text26">Skills</span>
+      </form>
+      <form className="resumesearch-form2" onClick={handleSelectResume}>
+        <span className="resumesearch-text27">Project</span>
+        <span className="resumesearch-text28">Role</span>
+        <span className="resumesearch-text29">Skills</span>
+      </form>
+      <form className="resumesearch-form3" onClick={handleSelectResume}>
+        <span className="resumesearch-text30">Project</span>
+        <span className="resumesearch-text31">Role</span>
+        <span className="resumesearch-text32">Skills</span>
+      </form>
     </div>
   )
 }

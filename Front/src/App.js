@@ -11,6 +11,10 @@ import Resume from './Pages/resume.js';
 import Notice from './Pages/notice.js';
 import Join from './Pages/join.js';
 import JoinResult from './Pages/join_result.js';
+import SelectedNotice from './Pages/selected_notice.js';
+import SelectedResume from './Pages/selected_resume.js';
+import ResumeResult from './Pages/resume_result.js';
+import NoticeResult from './Pages/notice_result.js';
 
 function App() {
   return (
@@ -25,6 +29,10 @@ function App() {
           <Route path="/notice" element={<Notice />} />
           <Route path="/join" element={<Join />} />
           <Route path="/joinResult" element={<JoinResult />} />
+          <Route path="/selectedNotice" element={<SelectedNotice />} />
+          <Route path="/selectedResume" element={<SelectedResume />} />
+          <Route path="/resumeResult" element={<ResumeResult />} />
+          <Route path="/noticeResult" element={<NoticeResult />} />
           {/* 추가적인 Route 설정 */}
         </Routes>
       </div>

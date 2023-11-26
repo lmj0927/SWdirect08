@@ -24,6 +24,12 @@ const Noticesearch = (props) => {
   const handleNotice = () => {
     navigate('/notice');
   };
+  const handleSelectNotice = () => {
+    navigate('/selectedNotice');
+  };
+  const handleNoticeResult = () => {
+    navigate('/noticeResult');
+  };
   return (
     <div className="noticesearch-container">
       <input
@@ -58,27 +64,14 @@ const Noticesearch = (props) => {
           </svg>
         </div>
       </footer>
-      {/* <span className="noticesearch-text03">Teaming</span> */}
-      <h1 className="noticesearch-text04">
+      <h1 className="noticesearch-text03">
         <span>새로 등록된 모집 공고</span>
         <br></br>
       </h1>
-      <textarea
-        placeholder="None"
-        className="noticesearch-textarea textarea"
-      ></textarea>
-      <textarea
-        placeholder="None"
-        className="noticesearch-textarea1 textarea"
-      ></textarea>
-      <textarea
-        placeholder="None"
-        className="noticesearch-textarea2 textarea"
-      ></textarea>
       <ul className="list"></ul>
       <form className="noticesearch-form"></form>
       <button type="button" className="noticesearch-button button" onClick={handleHome}>
-        <span className="noticesearch-text07">
+        <span className="noticesearch-text06">
           <span>홈</span>
           <br></br>
         </span>
@@ -90,7 +83,7 @@ const Noticesearch = (props) => {
         </span>
       </button>
       <button type="button" className="noticesearch-button2 button" onClick={handleSearchResume}>
-        <span className="noticesearch-text13">
+        <span className="noticesearch-text12">
           <span>이력서 검색</span>
           <br></br>
         </span>
@@ -99,17 +92,38 @@ const Noticesearch = (props) => {
         모집 공고 검색
       </button>
       <button type="button" className="noticesearch-button4 button" onClick={handleResume}>
-        <span className="noticesearch-text16">
+        <span className="noticesearch-text15">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
       <button type="button" className="noticesearch-button5 button" onClick={handleNotice}>
-        <span className="noticesearch-text19">
+        <span className="noticesearch-text18">
           <span>내 모집 공고</span>
           <br></br>
         </span>
       </button>
+      <button type="button" className="noticesearch-button6 button" onClick={handleNoticeResult}>
+        <span className="noticesearch-text21">
+          <span>검색</span>
+          <br></br>
+        </span>
+      </button>
+      <form className="noticesearch-form1" onClick={handleSelectNotice}>
+        <span className="noticesearch-text24">Project</span>
+        <span className="noticesearch-text25">Role</span>
+        <span className="noticesearch-text26">Skills</span>
+      </form>
+      <form className="noticesearch-form2" onClick={handleSelectNotice}>
+        <span className="noticesearch-text27">Project</span>
+        <span className="noticesearch-text28">Role</span>
+        <span className="noticesearch-text29">Skills</span>
+      </form>
+      <form className="noticesearch-form3" onClick={handleSelectNotice}>
+        <span className="noticesearch-text30">Project</span>
+        <span className="noticesearch-text31">Role</span>
+        <span className="noticesearch-text32">Skills</span>
+      </form>
     </div>
   )
 }
