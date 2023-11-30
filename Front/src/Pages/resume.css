@@ -98,6 +98,29 @@
   font-size: 20px;
   border-color: #ffffff;
 }
+
+.resume-view{
+  top: 70px;
+  left: 870px;
+  position: absolute;
+  font-size: 10px;
+  border-color: #ffffff;
+}
+.resume-register{
+  top: 70px;
+  left: 910px;
+  position: absolute;
+  font-size: 10px;
+  border-color: #ffffff;
+}
+.resume-edit{
+  top: 70px;
+  left: 950px;
+  position: absolute;
+  font-size: 10px;
+  border-color: #ffffff;
+}
+
 .resume-text11 {
   font-style: normal;
   font-weight: 900;
@@ -109,6 +132,29 @@
   font-size: 20px;
   border-color: #ffffff;
 }
+
+.notice-view{
+  top: 70px;
+  left: 1035px;
+  position: absolute;
+  font-size: 10px;
+  border-color: #ffffff;
+}
+.notice-register{
+  top: 70px;
+  left: 1075px;
+  position: absolute;
+  font-size: 10px;
+  border-color: #ffffff;
+}
+.notice-edit{
+  top: 70px;
+  left: 1115px;
+  position: absolute;
+  font-size: 10px;
+  border-color: #ffffff;
+}
+
 .resume-text14 {
   font-style: normal;
   font-weight: 900;
@@ -118,7 +164,7 @@
   right: 0px;
   width: 789px;
   bottom: 0px;
-  height: 790px;
+  height: 800px;
   margin: auto;
   display: flex;
   position: absolute;
@@ -128,8 +174,8 @@
   justify-content: center;
 }
 .resume-text17 {
-  top: 250px;
-  left: 85px;
+  top: 225px;
+  left: 95px;
   width: var(--dl-size-size-large);
   height: var(--dl-size-size-small);
   position: absolute;
@@ -139,18 +185,7 @@
   font-weight: 700;
 }
 .resume-select {
-  top: 240px;
-  left: 0px;
-  right: 0px;
-  width: 290px;
-  height: 71px;
-  margin: auto;
-  position: absolute;
-  border-color: #7ab1ff;
-  border-width: 1px;
-}
-.resume-select1 {
-  top: 125px;
+  top: 215px;
   left: 0px;
   right: 0px;
   width: 290px;
@@ -161,7 +196,7 @@
   border-width: 1px;
 }
 .resume-text20 {
-  top: 140px;
+  top: 120px;
   left: 85px;
   width: var(--dl-size-size-large);
   height: var(--dl-size-size-small);
@@ -172,8 +207,8 @@
   font-weight: 700;
 }
 .resume-text23 {
-  top: 360px;
-  left: 85px;
+  top: 325px;
+  left: 70px;
   width: var(--dl-size-size-large);
   height: var(--dl-size-size-small);
   position: absolute;
@@ -182,8 +217,25 @@
   text-align: center;
   font-weight: 700;
 }
+.resume-text24 {
+  font-size: 30px;
+}
+.resume-text26 {
+  top: 400px;
+  left: 70px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 35px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 700;
+}
+.resume-text27 {
+  font-size: 30px;
+}
 .resume-textinput {
-  top: 530px;
+  top: 600px;
   left: 0px;
   right: 0px;
   width: 419px;
@@ -192,8 +244,8 @@
   position: absolute;
   border-color: #7ab1ff;
 }
-.resume-text26 {
-  top: 470px;
+.resume-text29 {
+  top: 550px;
   left: 0px;
   right: 0px;
   width: var(--dl-size-size-maxwidth);
@@ -207,16 +259,24 @@
   font-weight: 700;
 }
 .resume-textinput1 {
-  top: 355px;
-  left: 0px;
-  right: 0px;
-  width: 327px;
+  top: 320px;
+  left: 185px;
+  width: 232px;
   height: 60px;
   margin: auto;
   position: absolute;
   border-color: #7ab1ff;
 }
-.resume-text29 {
+.resume-textinput2 {
+  top: 395px;
+  left: 185px;
+  width: 232px;
+  height: 60px;
+  margin: auto;
+  position: absolute;
+  border-color: #7ab1ff;
+}
+.resume-text32 {
   top: 32px;
   left: 0px;
   color: rgb(0, 102, 255);
@@ -231,7 +291,7 @@
   font-weight: 300;
 }
 .resume-button6 {
-  top: 700px;
+  top: 740px;
   left: 0px;
   color: #7ab1ff;
   right: 0px;
@@ -241,6 +301,102 @@
   position: absolute;
   font-size: 30px;
   border-color: #7ab1ff;
+}
+.resume-textinput3 {
+  top: 115px;
+  left: 0px;
+  right: 0px;
+  width: 327px;
+  height: 60px;
+  margin: auto;
+  position: absolute;
+  border-color: #7ab1ff;
+}
+.resume-text38 {
+  top: 330px;
+  left: 460px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 30px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 700;
+}
+.resume-text41 {
+  top: 400px;
+  left: 460px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 30px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 700;
+}
+.resume-select1 {
+  top: 325px;
+  left: 550px;
+  width: 68px;
+  height: 55px;
+  margin: auto;
+  position: absolute;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+.resume-select2 {
+  top: 395px;
+  left: 550px;
+  width: 70px;
+  height: 55px;
+  margin: auto;
+  position: absolute;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+.resume-text44 {
+  top: 470px;
+  left: 70px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 35px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 700;
+}
+.resume-text45 {
+  font-size: 30px;
+}
+.resume-textinput4 {
+  top: 470px;
+  left: 185px;
+  width: 232px;
+  height: 60px;
+  margin: auto;
+  position: absolute;
+  border-color: #7ab1ff;
+}
+.resume-text47 {
+  top: 470px;
+  left: 460px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 30px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 700;
+}
+.resume-select3 {
+  top: 465px;
+  left: 550px;
+  width: 70px;
+  height: 55px;
+  margin: auto;
+  position: absolute;
+  border-color: #7ab1ff;
+  border-width: 1px;
 }
 @media(max-width: 1200px) {
   .resume-text {

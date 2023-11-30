@@ -2,6 +2,7 @@ import React from 'react'
 
 import './search_notice.css'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Noticesearch = (props) => {
   const navigate = useNavigate();
@@ -18,18 +19,57 @@ const Noticesearch = (props) => {
   const handleSearchNotice = () => {
     navigate('/searchNotice');
   };
-  const handleResume = () => {
-    navigate('/resume');
-  };
-  const handleNotice = () => {
-    navigate('/notice');
-  };
+
   const handleSelectNotice = () => {
     navigate('/selectedNotice');
   };
   const handleNoticeResult = () => {
     navigate('/noticeResult');
   };
+
+  const [showAdditionalResumeButtons, setShowAdditionalResumeButtons] = useState(false);
+  const [showAdditionalNoticeButtons, setShowAdditionalNoticeButtons] = useState(false);
+
+  const handleResumeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalResumeButtons((prev) => !prev);
+  };
+
+  const handleResumeView = () => {
+    navigate('/selectedResume')
+    console.log('View clicked');
+  };
+
+  const handleResumeRegister = () => {
+    navigate('/resume')
+    console.log('Register clicked');
+  };
+
+  const handleResumeEdit = () => {
+    navigate('/resume')
+    console.log('Edit clicked');
+  };
+
+  const handleNoticeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalNoticeButtons((prev) => !prev);
+  };
+
+  const handleNoticeView = () => {
+    navigate('/selectedNotice')
+    console.log('View clicked');
+  };
+
+  const handleNoticeRegister = () => {
+    navigate('/notice')
+    console.log('Register clicked');
+  };
+
+  const handleNoticeEdit = () => {
+    navigate('/notice')
+    console.log('Edit clicked');
+  };
+
   return (
     <div className="noticesearch-container">
       <input
@@ -91,25 +131,55 @@ const Noticesearch = (props) => {
       <button type="button" className="noticesearch-button3 button" onClick={handleSearchNotice}>
         모집 공고 검색
       </button>
-      <button type="button" className="noticesearch-button4 button" onClick={handleResume}>
+      <button type="button" className="noticesearch-button4 button" onClick={handleResumeEnter}>
         <span className="noticesearch-text15">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
-      <button type="button" className="noticesearch-button5 button" onClick={handleNotice}>
+
+      {showAdditionalResumeButtons && (
+        <div>
+          <button type="button" className="resume-view button" onClick={handleResumeView}>
+            보기
+          </button>
+          <button type="button" className="resume-register button" onClick={handleResumeRegister}>
+            등록
+          </button>
+          <button type="button" className="resume-edit button" onClick={handleResumeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+
+      <button type="button" className="noticesearch-button5 button" onClick={handleNoticeEnter}>
         <span className="noticesearch-text18">
           <span>내 모집 공고</span>
           <br></br>
         </span>
       </button>
+
+      {showAdditionalNoticeButtons && (
+        <div>
+          <button type="button" className="notice-view button" onClick={handleNoticeView}>
+            보기
+          </button>
+          <button type="button" className="notice-register button" onClick={handleNoticeRegister}>
+            등록
+          </button>
+          <button type="button" className="notice-edit button" onClick={handleNoticeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+      
       <button type="button" className="noticesearch-button6 button" onClick={handleNoticeResult}>
         <span className="noticesearch-text21">
           <span>검색</span>
           <br></br>
         </span>
       </button>
-      <form className="noticesearch-form1" onClick={handleSelectNotice}>
+      {/* <form className="noticesearch-form1" onClick={handleSelectNotice}>
         <span className="noticesearch-text24">Project</span>
         <span className="noticesearch-text25">Role</span>
         <span className="noticesearch-text26">Skills</span>
@@ -123,7 +193,7 @@ const Noticesearch = (props) => {
         <span className="noticesearch-text30">Project</span>
         <span className="noticesearch-text31">Role</span>
         <span className="noticesearch-text32">Skills</span>
-      </form>
+      </form> */}
     </div>
   )
 }

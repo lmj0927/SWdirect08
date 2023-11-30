@@ -2,6 +2,7 @@ import React from 'react'
 
 import './home.css'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Home = (props) => {
   const navigate = useNavigate();
@@ -18,18 +19,57 @@ const Home = (props) => {
   const handleSearchNotice = () => {
     navigate('/searchNotice');
   };
-  const handleResume = () => {
-    navigate('/resume');
-  };
-  const handleNotice = () => {
-    navigate('/notice');
-  };
+
   const handleSelectResume = () => {
     navigate('/selectedResume');
   };
   const handleSelectNotice = () => {
     navigate('/selectedNotice');
   };
+
+  const [showAdditionalResumeButtons, setShowAdditionalResumeButtons] = useState(false);
+  const [showAdditionalNoticeButtons, setShowAdditionalNoticeButtons] = useState(false);
+
+  const handleResumeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalResumeButtons((prev) => !prev);
+  };
+
+  const handleResumeView = () => {
+    navigate('/selectedResume')
+    console.log('View clicked');
+  };
+
+  const handleResumeRegister = () => {
+    navigate('/resume')
+    console.log('Register clicked');
+  };
+
+  const handleResumeEdit = () => {
+    navigate('/resume')
+    console.log('Edit clicked');
+  };
+
+  const handleNoticeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalNoticeButtons((prev) => !prev);
+  };
+
+  const handleNoticeView = () => {
+    navigate('/selectedNotice')
+    console.log('View clicked');
+  };
+
+  const handleNoticeRegister = () => {
+    navigate('/notice')
+    console.log('Register clicked');
+  };
+
+  const handleNoticeEdit = () => {
+    navigate('/notice')
+    console.log('Edit clicked');
+  };
+
   return (
     <div className="home-container">
       <ul className="list"></ul>
@@ -70,19 +110,48 @@ const Home = (props) => {
       <button type="button" className="home-button3 button" onClick={handleSearchNotice}>
         모집 공고 검색
       </button>
-      <button type="button" className="home-button4 button" onClick={handleResume}>
+      <button type="button" className="home-button4 button" onClick={handleResumeEnter}>
         <span className="home-text18">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
-      <button type="button" className="home-button5 button" onClick={handleNotice}>
+
+      {showAdditionalResumeButtons && (
+        <div>
+          <button type="button" className="resume-view button" onClick={handleResumeView}>
+            보기
+          </button>
+          <button type="button" className="resume-register button" onClick={handleResumeRegister}>
+            등록
+          </button>
+          <button type="button" className="resume-edit button" onClick={handleResumeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+
+      <button type="button" className="home-button5 button" onClick={handleNoticeEnter}>
         <span className="home-text21">
           <span>내 모집 공고</span>
           <br></br>
         </span>
       </button>
-      <form className="home-form1" onClick={handleSelectResume}>
+
+      {showAdditionalNoticeButtons && (
+        <div>
+          <button type="button" className="notice-view button" onClick={handleNoticeView}>
+            보기
+          </button>
+          <button type="button" className="notice-register button" onClick={handleNoticeRegister}>
+            등록
+          </button>
+          <button type="button" className="notice-edit button" onClick={handleNoticeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+      {/* <form className="home-form1" onClick={handleSelectResume}>
         <span className="home-text24">Project</span>
         <span className="home-text25">Role</span>
         <span className="home-text26">Skills</span>
@@ -111,7 +180,7 @@ const Home = (props) => {
         <span className="home-text39">Project</span>
         <span className="home-text40">Role</span>
         <span className="home-text41">Skills</span>
-      </form>
+      </form> */}
     </div>
   )
 }

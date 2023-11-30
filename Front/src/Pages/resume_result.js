@@ -2,6 +2,7 @@ import React from 'react'
 
 import './resume_result.css'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const ResumeResult = (props) => {
   const navigate = useNavigate();
@@ -18,24 +19,67 @@ const ResumeResult = (props) => {
   const handleSearchNotice = () => {
     navigate('/searchNotice');
   };
-  const handleResume = () => {
-    navigate('/resume');
-  };
-  const handleNotice = () => {
-    navigate('/notice');
-  };
+  // const handleResume = () => {
+  //   navigate('/resume');
+  // };
+  // const handleNotice = () => {
+  //   navigate('/notice');
+  // };
   const handleSelectResume = () => {
     navigate('/selectedResume');
   };
   const handleResumeResult = () => {
     navigate('/resumeResult');
   };
-  const handleNextPage = () => {
-    navigate('/resumeResult');
+  // const handleNextPage = () => {
+  //   navigate('/resumeResult');
+  // };
+  // const handlePrevPage = () => {
+  //   navigate('/resumeResult');
+  // };
+  const [showAdditionalResumeButtons, setShowAdditionalResumeButtons] = useState(false);
+  const [showAdditionalNoticeButtons, setShowAdditionalNoticeButtons] = useState(false);
+
+  const handleResumeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalResumeButtons((prev) => !prev);
   };
-  const handlePrevPage = () => {
-    navigate('/resumeResult');
+
+  const handleResumeView = () => {
+    navigate('/selectedResume')
+    console.log('View clicked');
   };
+
+  const handleResumeRegister = () => {
+    navigate('/resume')
+    console.log('Register clicked');
+  };
+
+  const handleResumeEdit = () => {
+    navigate('/resume')
+    console.log('Edit clicked');
+  };
+
+  const handleNoticeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalNoticeButtons((prev) => !prev);
+  };
+
+  const handleNoticeView = () => {
+    navigate('/selectedNotice')
+    console.log('View clicked');
+  };
+
+  const handleNoticeRegister = () => {
+    navigate('/notice')
+    console.log('Register clicked');
+  };
+
+  const handleNoticeEdit = () => {
+    navigate('/notice')
+    console.log('Edit clicked');
+  };
+
   return (
     <div className="resume-result-container">
       <span className="resume-result-text">Teaming</span>
@@ -63,24 +107,54 @@ const ResumeResult = (props) => {
       <button type="button" className="resume-result-button3 button" onClick={handleSearchNotice}>
         모집 공고 검색
       </button>
-      <button type="button" className="resume-result-button4 button" onClick={handleResume}>
+      <button type="button" className="resume-result-button4 button" onClick={handleResumeEnter}>
         <span className="resume-result-text11">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
-      <button type="button" className="resume-result-button5 button" onClick={handleNotice}>
+
+      {showAdditionalResumeButtons && (
+        <div>
+          <button type="button" className="resume-view button" onClick={handleResumeView}>
+            보기
+          </button>
+          <button type="button" className="resume-register button" onClick={handleResumeRegister}>
+            등록
+          </button>
+          <button type="button" className="resume-edit button" onClick={handleResumeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+
+      <button type="button" className="resume-result-button5 button" onClick={handleNoticeEnter}>
         <span className="resume-result-text14">
           <span>내 모집 공고</span>
           <br></br>
         </span>
       </button>
+
+      {showAdditionalNoticeButtons && (
+        <div>
+          <button type="button" className="notice-view button" onClick={handleNoticeView}>
+            보기
+          </button>
+          <button type="button" className="notice-register button" onClick={handleNoticeRegister}>
+            등록
+          </button>
+          <button type="button" className="notice-edit button" onClick={handleNoticeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+
       <input
         type="text"
         placeholder="이력서 키워드를 입력하세요"
         className="resume-result-textinput input"
       />
-      <form className="resume-result-form1" onClick={handleSelectResume}>
+      {/* <form className="resume-result-form1" onClick={handleSelectResume}>
         <span className="resume-result-text17">Project</span>
         <span className="resume-result-text18">Role</span>
         <span className="resume-result-text19">Skills</span>
@@ -94,7 +168,7 @@ const ResumeResult = (props) => {
         <span className="resume-result-text23">Project</span>
         <span className="resume-result-text24">Role</span>
         <span className="resume-result-text25">Skills</span>
-      </form>
+      </form> */}
       <button type="button" className="resume-result-button6 button" onClick={handleResumeResult}>
         <span className="resume-result-text26">
           <span>검색</span>
@@ -126,12 +200,21 @@ const ResumeResult = (props) => {
           </svg>
         </div>
       </footer>
-      <button type="button" className="resume-result-button7 button" onClick={handlePrevPage}>
+      {/* <button type="button" className="resume-result-button7 button" onClick={handlePrevPage}>
         ◀
       </button>
       <button type="button" className="resume-result-button8 button" onClick={handleNextPage}>
         ▶
-      </button>
+      </button> */}
+
+      <div class="dropdown" className="sort-dropdown dropdown">
+        <button>정렬</button>
+        <div class="dropdown-options" className="sort-options dropdown-options">
+          <a href="#">조회순</a>
+          <a href="#">최신순</a>
+        </div>
+      </div>
+
     </div>
   )
 }

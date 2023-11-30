@@ -2,7 +2,7 @@ import React from 'react'
 
 import './search_resume.css'
 import { useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
 
 const Resumesearch = (props) => {
   const navigate = useNavigate();
@@ -19,17 +19,54 @@ const Resumesearch = (props) => {
   const handleSearchNotice = () => {
     navigate('/searchNotice');
   };
-  const handleResume = () => {
-    navigate('/resume');
-  };
-  const handleNotice = () => {
-    navigate('/notice');
-  };
   const handleSelectResume = () => {
     navigate('/selectedResume');
   };
   const handleResumeResult = () => {
     navigate('/resumeResult');
+  };
+
+  const [showAdditionalResumeButtons, setShowAdditionalResumeButtons] = useState(false);
+  const [showAdditionalNoticeButtons, setShowAdditionalNoticeButtons] = useState(false);
+
+  const handleResumeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalResumeButtons((prev) => !prev);
+  };
+
+  const handleResumeView = () => {
+    navigate('/selectedResume')
+    console.log('View clicked');
+  };
+
+  const handleResumeRegister = () => {
+    navigate('/resume')
+    console.log('Register clicked');
+  };
+
+  const handleResumeEdit = () => {
+    navigate('/resume')
+    console.log('Edit clicked');
+  };
+
+  const handleNoticeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalNoticeButtons((prev) => !prev);
+  };
+
+  const handleNoticeView = () => {
+    navigate('/selectedNotice')
+    console.log('View clicked');
+  };
+
+  const handleNoticeRegister = () => {
+    navigate('/notice')
+    console.log('Register clicked');
+  };
+
+  const handleNoticeEdit = () => {
+    navigate('/notice')
+    console.log('Edit clicked');
   };
   return (
     <div className="resumesearch-container">
@@ -92,25 +129,55 @@ const Resumesearch = (props) => {
       <button type="button" className="resumesearch-button3 button" onClick={handleSearchNotice}>
         모집 공고 검색
       </button>
-      <button type="button" className="resumesearch-button4 button" onClick={handleResume}>
+      <button type="button" className="resumesearch-button4 button" onClick={handleResumeEnter}>
         <span className="resumesearch-text15">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
-      <button type="button" className="resumesearch-button5 button" onClick={handleNotice}>
+
+      {showAdditionalResumeButtons && (
+        <div>
+          <button type="button" className="resume-view button" onClick={handleResumeView}>
+            보기
+          </button>
+          <button type="button" className="resume-register button" onClick={handleResumeRegister}>
+            등록
+          </button>
+          <button type="button" className="resume-edit button" onClick={handleResumeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+
+      <button type="button" className="resumesearch-button5 button" onClick={handleNoticeEnter}>
         <span className="resumesearch-text18">
           <span>내 모집 공고</span>
           <br></br>
         </span>
       </button>
+
+      {showAdditionalNoticeButtons && (
+        <div>
+          <button type="button" className="notice-view button" onClick={handleNoticeView}>
+            보기
+          </button>
+          <button type="button" className="notice-register button" onClick={handleNoticeRegister}>
+            등록
+          </button>
+          <button type="button" className="notice-edit button" onClick={handleNoticeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+
       <button type="button" className="resumesearch-button6 button" onClick={handleResumeResult}>
         <span className="resumesearch-text21">
           <span>검색</span>
           <br></br>
         </span>
       </button>
-      <form className="resumesearch-form1" onClick={handleSelectResume}>
+      {/* <form className="resumesearch-form1" onClick={handleSelectResume}>
         <span className="resumesearch-text24">Project</span>
         <span className="resumesearch-text25">Role</span>
         <span className="resumesearch-text26">Skills</span>
@@ -124,7 +191,7 @@ const Resumesearch = (props) => {
         <span className="resumesearch-text30">Project</span>
         <span className="resumesearch-text31">Role</span>
         <span className="resumesearch-text32">Skills</span>
-      </form>
+      </form> */}
     </div>
   )
 }

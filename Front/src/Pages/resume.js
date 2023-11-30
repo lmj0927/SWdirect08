@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useState } from 'react';
 import './resume.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -18,12 +18,56 @@ const Resume = (props) => {
     const handleSearchNotice = () => {
       navigate('/searchNotice');
     };
-    const handleResume = () => {
-      navigate('/resume');
-    };
-    const handleNotice = () => {
-      navigate('/notice');
-    };
+    // const handleResume = () => {
+    //   navigate('/resume');
+    // };
+    // const handleNotice = () => {
+    //   navigate('/notice');
+    // };
+
+  const [showAdditionalResumeButtons, setShowAdditionalResumeButtons] = useState(false);
+  const [showAdditionalNoticeButtons, setShowAdditionalNoticeButtons] = useState(false);
+
+  const handleResumeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalResumeButtons((prev) => !prev);
+  };
+
+  const handleResumeView = () => {
+    navigate('/selectedResume')
+    console.log('View clicked');
+  };
+
+  const handleResumeRegister = () => {
+    navigate('/resume')
+    console.log('Register clicked');
+  };
+
+  const handleResumeEdit = () => {
+    navigate('/resume')
+    console.log('Edit clicked');
+  };
+
+  const handleNoticeEnter = () => {
+    // setShowAdditionalButtons(true);
+    setShowAdditionalNoticeButtons((prev) => !prev);
+  };
+
+  const handleNoticeView = () => {
+    navigate('/selectedNotice')
+    console.log('View clicked');
+  };
+
+  const handleNoticeRegister = () => {
+    navigate('/notice')
+    console.log('Register clicked');
+  };
+
+  const handleNoticeEdit = () => {
+    navigate('/notice')
+    console.log('Edit clicked');
+  };
+
   return (
     <div className="resume-container">
       <span className="resume-text">Teaming</span>
@@ -42,7 +86,7 @@ const Resume = (props) => {
           <br></br>
         </span>
       </button>
-      <button type="button" className="resume-button2 button" onClick={handleSearchResume}>
+      <button type="button" className="resume-button2 button"onClick={handleSearchResume}>
         <span className="resume-text08">
           <span>이력서 검색</span>
           <br></br>
@@ -51,18 +95,49 @@ const Resume = (props) => {
       <button type="button" className="resume-button3 button" onClick={handleSearchNotice}>
         모집 공고 검색
       </button>
-      <button type="button" className="resume-button4 button" onClick={handleResume}>
+
+      <button type="button" className="resume-button4 button" onClick={handleResumeEnter}>
         <span className="resume-text11">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
-      <button type="button" className="resume-button5 button" onClick={handleNotice}>
+
+      {showAdditionalResumeButtons && (
+        <div>
+          <button type="button" className="resume-view button" onClick={handleResumeView}>
+            보기
+          </button>
+          <button type="button" className="resume-register button" onClick={handleResumeRegister}>
+            등록
+          </button>
+          <button type="button" className="resume-edit button" onClick={handleResumeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+
+      <button type="button" className="resume-button5 button" onClick={handleNoticeEnter}>
         <span className="resume-text14">
           <span>내 모집 공고</span>
           <br></br>
         </span>
       </button>
+
+      {showAdditionalNoticeButtons && (
+        <div>
+          <button type="button" className="notice-view button" onClick={handleNoticeView}>
+            보기
+          </button>
+          <button type="button" className="notice-register button" onClick={handleNoticeRegister}>
+            등록
+          </button>
+          <button type="button" className="notice-edit button" onClick={handleNoticeEdit}>
+            수정
+          </button>
+        </div>
+      )}
+
       <form className="resume-form1">
         <span className="resume-text17">
           <span>Role</span>
@@ -76,21 +151,16 @@ const Resume = (props) => {
           <option value="Role5">마케팅</option>
           <option value="Role6">기타</option>
         </select>
-        <select className="resume-select1">
-          <option value="Project1" selected>
-            교내 수업
-          </option>
-          <option value="Project2">공모전</option>
-          <option value="Project3">교내 대회</option>
-          <option value="Project4">외부 대회</option>
-          <option value="Project5">스터디</option>
-        </select>
         <span className="resume-text20">
-          <span>Project</span>
+          <span>Major</span>
           <br></br>
         </span>
         <span className="resume-text23">
-          <span>Skills</span>
+          <span className="resume-text24">Skill 1</span>
+          <br></br>
+        </span>
+        <span className="resume-text26">
+          <span className="resume-text27">Skill 2</span>
           <br></br>
         </span>
         <input
@@ -98,7 +168,7 @@ const Resume = (props) => {
           placeholder="간단히 본인을 소개해주세요"
           className="resume-textinput input"
         />
-        <span className="resume-text26">
+        <span className="resume-text29">
           <span>Introduction</span>
           <br></br>
         </span>
@@ -107,16 +177,71 @@ const Resume = (props) => {
           placeholder="본인의 역량을 작성해주세요"
           className="resume-textinput1 input"
         />
-        <span className="resume-text29">
+        <input
+          type="text"
+          placeholder="본인의 역량을 작성해주세요"
+          className="resume-textinput2 input"
+        />
+        <span className="resume-text32">
           <span>Resume</span>
           <br></br>
         </span>
-        <button type="button" className="resume-button6 button" onClick={handleHome}>
+        <button type="button" className="resume-button6 button">
           <span>
             <span>등록</span>
             <br></br>
           </span>
         </button>
+        <input
+          type="text"
+          placeholder="전공을 작성해주세요"
+          className="resume-textinput3 input"
+        />
+        <span className="resume-text38">
+          <span>Level</span>
+          <br></br>
+        </span>
+        <span className="resume-text41">
+          <span>Level</span>
+          <br></br>
+        </span>
+        <select className="resume-select1">
+          <option value="null" selected>
+            None
+          </option>
+          <option value="level1">1</option>
+          <option value="level2">2</option>
+          <option value="level3">3</option>
+        </select>
+        <select className="resume-select2">
+        <option value="null" selected>
+            None
+          </option>
+          <option value="level1">1</option>
+          <option value="level2">2</option>
+          <option value="level3">3</option>
+        </select>
+        <span className="resume-text44">
+          <span className="resume-text45">Skill 3</span>
+          <br></br>
+        </span>
+        <input
+          type="text"
+          placeholder="본인의 역량을 작성해주세요"
+          className="resume-textinput4 input"
+        />
+        <span className="resume-text47">
+          <span>Level</span>
+          <br></br>
+        </span>
+        <select className="resume-select3">
+        <option value="null" selected>
+            None
+          </option>
+          <option value="level1">1</option>
+          <option value="level2">2</option>
+          <option value="level3">3</option>
+        </select>
       </form>
     </div>
   )
