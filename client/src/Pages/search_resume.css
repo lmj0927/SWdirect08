@@ -1,0 +1,356 @@
+.resumesearch-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.resumesearch-textinput {
+  top: 177px;
+  left: 0px;
+  right: 0px;
+  width: 425px;
+  height: 63px;
+  margin: auto;
+  position: absolute;
+  border-color: #0066ff;
+}
+.resumesearch-text {
+  top: 17px;
+  left: 35px;
+  color: rgb(0, 102, 255);
+  width: var(--dl-size-size-medium);
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: italic;
+  text-align: center;
+  font-family: "Inter";
+  font-weight: 300;
+  line-height: 40px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.resumesearch-text01 {
+  top: 60px;
+  left: 13px;
+  color: rgb(0, 102, 255);
+  width: var(--dl-size-size-xxlarge);
+  height: auto;
+  position: absolute;
+  font-size: 22px;
+  font-style: italic;
+  text-align: center;
+  font-family: "Inter";
+  font-weight: 300;
+  line-height: 40px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.resumesearch-text02 {
+  top: 280px;
+  left: 0px;
+  color: #0066ff;
+  right: 0px;
+  width: 275px;
+  height: 51px;
+  margin: auto;
+  position: absolute;
+}
+.resumesearch-footer {
+  left: 123px;
+  width: 100%;
+  bottom: 38px;
+  display: flex;
+  position: absolute;
+  max-width: var(--dl-size-size-maxwidth);
+  align-items: center;
+  padding-top: var(--dl-space-space-twounits);
+  padding-left: var(--dl-space-space-threeunits);
+  padding-right: var(--dl-space-space-threeunits);
+  padding-bottom: var(--dl-space-space-twounits);
+  justify-content: flex-end;
+}
+.resumesearch-text05 {
+  top: 29px;
+  left: 536px;
+  position: absolute;
+}
+.resumesearch-icon-group {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.resumesearch-icon {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.resumesearch-icon2 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.resumesearch-icon4 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.resumesearch-form {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  position: absolute;
+  align-self: center;
+  border-color: var(--dl-color-gray-black);
+  border-style: groove;
+  border-width: 2px;
+}
+.resumesearch-button {
+  top: 35px;
+  left: 450px;
+  position: absolute;
+  border-color: #ffffff;
+}
+.resumesearch-text06 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+}
+.resumesearch-button1 {
+  top: 37px;
+  color: #ffffff;
+  right: 60px;
+  width: 123px;
+  height: 56px;
+  position: absolute;
+  font-size: 20px;
+  background-color: #000000;
+}
+.resumesearch-button2 {
+  top: 35px;
+  left: 534px;
+  position: absolute;
+  border-color: #ffffff;
+}
+.resumesearch-text12 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+}
+.resumesearch-button3 {
+  top: 35px;
+  left: 690px;
+  position: absolute;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  border-color: #ffffff;
+}
+.resumesearch-button4 {
+  top: 35px;
+  left: 877px;
+  position: absolute;
+  font-size: 20px;
+  border-color: #ffffff;
+}
+.resumesearch-text15 {
+  font-style: normal;
+  font-weight: 900;
+}
+.resumesearch-button5 {
+  top: 35px;
+  left: 1027px;
+  position: absolute;
+  font-size: 20px;
+  border-color: #ffffff;
+}
+.resumesearch-text18 {
+  font-style: normal;
+  font-weight: 900;
+}
+.resumesearch-button6 {
+  top: 200px;
+  left: 1080px;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  border-color: #7ab1ff;
+}
+.resumesearch-text21 {
+  color: #7ab1ff;
+}
+.resumesearch-form1 {
+  top: 340px;
+  left: 0px;
+  right: 0px;
+  width: 699px;
+  height: 116px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  box-shadow: 5px 5px 10px 0px #7ab1ff;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+.resumesearch-text24 {
+  top: 40px;
+  left: 80px;
+  color: rgb(0, 102, 255);
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.resumesearch-text25 {
+  top: 40px;
+  left: 0px;
+  color: rgb(0, 102, 255);
+  right: 0px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  margin: auto;
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.resumesearch-text26 {
+  top: 40px;
+  color: rgb(0, 102, 255);
+  right: 80px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.resumesearch-form2 {
+  top: 520px;
+  left: 0px;
+  right: 0px;
+  width: 699px;
+  height: 116px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  box-shadow: 5px 5px 10px 0px #7ab1ff;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+.resumesearch-text27 {
+  top: 40px;
+  left: 80px;
+  color: rgb(0, 102, 255);
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.resumesearch-text28 {
+  top: 40px;
+  left: 0px;
+  color: rgb(0, 102, 255);
+  right: 0px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  margin: auto;
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.resumesearch-text29 {
+  top: 40px;
+  color: rgb(0, 102, 255);
+  right: 80px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.resumesearch-form3 {
+  top: 700px;
+  left: 0px;
+  right: 0px;
+  width: 699px;
+  height: 116px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  box-shadow: 5px 5px 10px 0px #7ab1ff;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+.resumesearch-text30 {
+  top: 40px;
+  left: 80px;
+  color: rgb(0, 102, 255);
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.resumesearch-text31 {
+  top: 40px;
+  left: 0px;
+  color: rgb(0, 102, 255);
+  right: 0px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  margin: auto;
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.resumesearch-text32 {
+  top: 40px;
+  color: rgb(0, 102, 255);
+  right: 80px;
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+@media(max-width: 1200px) {
+  .resumesearch-text {
+    top: 32px;
+    left: 60px;
+  }
+  .resumesearch-text01 {
+    top: 32px;
+    left: 60px;
+  }
+  .resumesearch-button1 {
+    top: 37px;
+    right: 82px;
+    position: absolute;
+  }
+}
+@media(max-width: 767px) {
+  .resumesearch-footer {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .resumesearch-text05 {
+    text-align: center;
+    margin-left: var(--dl-space-space-unit);
+    margin-right: var(--dl-space-space-unit);
+  }
+}
+@media(max-width: 479px) {
+  .resumesearch-footer {
+    padding: var(--dl-space-space-unit);
+    flex-direction: column;
+  }
+  .resumesearch-text05 {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: var(--dl-space-space-unit);
+  }
+}
