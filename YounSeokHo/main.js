@@ -62,6 +62,8 @@ app.get('/main', (req, res) => {
   <a href="/write-notice">공고글 작성</a>
   <a href="/view-mynotices">내 작성글 보기</a>
   <a href="/view-allnotice">모든 공고글 보기</a>
+  <a href="/view-messages">내가 받은 메시지 확인</a>
+
   `, // 버튼 링크 추가
   authCheck.statusUI(req, res)
 );
@@ -75,7 +77,7 @@ app.get('/write-introduction', (req, res) => {
     return false;
   }
 
-  var userId = req.session.nickname;
+  var userId = req.session.mail;
   console.log("userid",userId)
 
   // my 테이블에서 자기소개서 정보 불러오기
@@ -106,7 +108,7 @@ app.post('/write-introduction-process', (req, res) => {
     return false;
   }
 
-  var userId = req.session.nickname;
+  var userId = req.session.mail;
   var pwd = req.session.pwd;
   console.log("입력받은 name:", req.body.name);
   console.log("입력받은 callnum:", req.body.callnum);
@@ -145,7 +147,7 @@ app.get('/view-introduction', (req, res) => {
     return false;
   }
 
-  var userId = req.session.nickname;
+  var userId = req.session.mail;
 
   // my 테이블에서 자기소개서 정보 불러오기
   db.query('SELECT * FROM my WHERE id = ?', [userId], function (error, results, fields) {
@@ -173,7 +175,7 @@ app.get('/edit-introduction', (req, res) => {
     return false;
   }
 
-  var userId = req.session.nickname;
+  var userId = req.session.mail;
 
   // my 테이블에서 자기소개서 정보 불러오기
   db.query('SELECT * FROM my WHERE id = ?', [userId], function (error, results, fields) {
@@ -204,7 +206,7 @@ app.post('/edit-introduction-process', (req, res) => {
     return false;
   }
 
-  var userId = req.session.nickname;
+  var userId = req.session.mail;
   var pwd = req.session.pwd;
 
   console.log("userid",userId);
@@ -244,8 +246,7 @@ app.get('/write-notice', (req, res) => {
     res.redirect('/auth/login');
     return false;
   }
-
-  var userId = req.session.nickname;
+  var writeremail = req.session.mail;
   const html = template.HTML('Write Notice',
     `
     <!DOCTYPE html>
@@ -260,7 +261,7 @@ app.get('/write-notice', (req, res) => {
             <table border="1">
                 <tr>
                     <td>작성자</td>
-                    <td><input type="text" name="name" id="name" value="${userId}" readonly/></td>
+                    <td><input type="text" name="name" id="name" value="${writeremail}" readonly/></td>
                 </tr>
                 <tr>
                     <td>제목</td>
@@ -290,13 +291,12 @@ app.post('/board/write', (req, res) => {
     res.redirect('/auth/login');
     return false;
   }
+  var writeemail = req.session.mail;
 
-  const userId = req.session.nickname; // 현재 로그인된 사용자의 아이디
   const title = req.body.title;
   const content = req.body.content;
-
   // writing 테이블에 데이터 추가, wid는 자동으로 증가
-  db.query('INSERT INTO writing (userid, title, content) VALUES (?, ?, ?)', [userId, title, content], function (error, data) {
+  db.query('INSERT INTO writing (writeremail, title, content) VALUES (?, ?, ?)', [writeemail, title, content], function (error, data) {
     if (error) {
       console.error(error);
       // 에러 메시지를 클라이언트에게 전송하거나 처리할 수 있는 로직 추가
@@ -314,16 +314,26 @@ app.get('/view-mynotices', (req, res) => {
     return false;
   }
 
-  const userId = req.session.nickname;
+  var writeemail = req.session.mail;
 
   // writing 테이블에서 사용자가 작성한 글 목록을 가져옴
-  db.query('SELECT * FROM writing WHERE userid = ?', [userId], function (error, results, fields) {
+  db.query('SELECT * FROM writing WHERE writeremail = ?', [writeemail], function (error, results, fields) {
     if (error) {
       console.error(error);
       // 에러 메시지를 클라이언트에게 전송하거나 처리할 수 있는 로직 추가
       return res.status(500).send('내 작성글을 불러오는 중 에러가 발생했습니다.');
     }
-
+    const formattedPosts = results.map(post => ({
+      ...post,
+      created_at: post.created_at.toLocaleString('ko-KR', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+      }),
+    }));
     // 가져온 글 목록을 표 형태로 나타내고 각각의 제목을 클릭하면 해당 글로 이동하는 HTML 생성
     const html = template.HTML('내 작성글 목록',
       `<hr>
@@ -333,7 +343,7 @@ app.get('/view-mynotices', (req, res) => {
           <th>제목</th>
           <th>작성일자</th>
         </tr>
-        ${results.map(result => `
+        ${formattedPosts.map(result =>  `
           <tr>
             <td><a href="/view-mynotices/${result.wid}">${result.title}</a></td>
             <td>${result.created_at}</td>
@@ -355,11 +365,11 @@ app.get('/view-mynotices/:wid', (req, res) => {
     return false;
   }
 
-  const userId = req.session.nickname;
+  var writeemail = req.session.mail;
   const wid = req.params.wid;
 
   // writing 테이블에서 해당 글의 내용을 가져옴
-  db.query('SELECT * FROM writing WHERE userid = ? AND wid = ?', [userId, wid], function (error, results, fields) {
+  db.query('SELECT * FROM writing WHERE writeremail = ? AND wid = ?', [writeemail, wid], function (error, results, fields) {
     if (error) {
       console.error(error);
       // 에러 메시지를 클라이언트에게 전송하거나 처리할 수 있는 로직 추가
@@ -367,12 +377,21 @@ app.get('/view-mynotices/:wid', (req, res) => {
     }
 
     // 가져온 글의 내용을 HTML 형식으로 표시
+    const formattedDate = results[0].created_at.toLocaleString('ko-KR', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    });
     const html = template.HTML('글 보기',
     `<hr>
     <div style="border: 1px solid #ccc; padding: 10px;">
       <p style="font-weight: bold;">제목: ${results[0].title}</p>
+      <p style="font-weight: bold;">작성자: ${results[0].writeremail}</p>
       <p style="white-space: pre-line;">${results[0].content}</p>
-      <p style="font-size: 12px;">작성일자: ${results[0].created_at}</p>
+      <p style="font-size: 12px;">작성일자: ${formattedDate}</p>
     </div>
     <a href="/view-mynotices">내 공고글 보기로 돌아가기</a>`,
     authCheck.statusUI(req, res)
@@ -388,11 +407,22 @@ app.get('/view-allnotice', (req, res) => {
   db.query('SELECT * FROM writing ORDER BY created_at ASC', function (error, results, fields) {
     if (error) throw error;
 
+    const formattedPosts = results.map(post => ({
+      ...post,
+      created_at: post.created_at.toLocaleString('ko-KR', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+      }),
+    }));
     const html = template.HTML('모든 공고글 보기',
       `<hr>
       <h2>모든 공고글</h2>
       <ul>
-        ${results.map(post => `<li><a href="/view-allnotice/${post.wid}">${post.title}</a> - 작성일자: ${post.created_at}</li>`).join('')}
+        ${formattedPosts.map(post => `<li><a href="/view-allnotice/${post.wid}">${post.title}</a> - 작성일자: ${post.created_at}</li>`).join('')}
       </ul>
       <a href="/main">메뉴로 돌아가기</a>`,
       authCheck.statusUI(req, res)
@@ -407,25 +437,36 @@ app.get('/view-allnotice/:wid', (req, res) => {
     return false;
   }
 
-  const userId = req.session.nickname;
+  var writeemail = req.session.mail;
   const wid = req.params.wid;
 
   // writing 테이블에서 해당 글의 내용을 가져옴
-  db.query('SELECT * FROM writing WHERE userid = ? AND wid = ?', [userId, wid], function (error, results, fields) {
+  db.query('SELECT * FROM writing WHERE writeremail = ? AND wid = ?', [writeemail, wid], function (error, results, fields) {
     if (error) {
       console.error(error);
       // 에러 메시지를 클라이언트에게 전송하거나 처리할 수 있는 로직 추가
       return res.status(500).send('글을 불러오는 중 에러가 발생했습니다.');
     }
-
+    // const formattedDate = results[0]; 
+    console.log(results);
+    const formattedDate = results[0].created_at.toLocaleString('ko-KR', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    });
     // 가져온 글의 내용을 HTML 형식으로 표시
     const html = template.HTML('글 보기',
     `<hr>
     <div style="border: 1px solid #ccc; padding: 10px;">
       <p style="font-weight: bold;">제목: ${results[0].title}</p>
+      <p style="font-weight: bold;">작성자: ${results[0].writeremail}</p>
       <p style="white-space: pre-line;">${results[0].content}</p>
-      <p style="font-size: 12px;">작성일자: ${results[0].created_at}</p>
-    </div>
+      <p style="font-size: 12px;">작성일자: ${formattedDate}</p>
+      <button onclick="sendRequest('${results[0].writeremail}')">요청 보내기</button>
+      </div>
     <a href="/view-allnotice">모든 공고글 보기로 돌아가기</a>`,
     authCheck.statusUI(req, res)
   );
@@ -434,6 +475,33 @@ app.get('/view-allnotice/:wid', (req, res) => {
   });
 });
 
+app.post('/send-message', authCheck, (req, res) => {
+  if (!authCheck.isOwner(req, res)) {
+    res.redirect('/auth/login');
+    return;
+  }
+
+  const { recipient, message } = req.body;
+  const sender = req.session.email;
+
+  if (!recipient || !message) {
+    res.status(400).send('수신자와 메시지를 모두 입력하세요.');
+    return;
+  }
+
+  db.run(
+    'INSERT INTO messages (sender_email, recipient_email, message) VALUES (?, ?, ?)',
+    [sender, recipient, message],
+    (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('메시지 전송 중 오류가 발생했습니다.');
+      } else {
+        res.redirect('/main');
+      }
+    }
+  );
+});
 
 
 app.listen(port, () => {
