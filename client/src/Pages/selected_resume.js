@@ -16,6 +16,7 @@ const SelectedResume = (props) => {
   const [responseLevel1, setResponseLevel1] = useState(null);
   const [responseLevel2, setResponseLevel2] = useState(null);
   const [responseLevel3, setResponseLevel3] = useState(null);
+  const [responseEmail, setResponseEmail] = useState(null);
 
   const [responseIntro, setResponseIntro] = useState(null);
 
@@ -36,6 +37,9 @@ const SelectedResume = (props) => {
       setResponseLevel3(response.data.level3);
 
       setResponseIntro(response.data.intro);
+
+      setResponseIntro(response.data.intro);
+      
 
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -181,23 +185,23 @@ const SelectedResume = (props) => {
       
       <form className="selected-resume-form1">
         <span className="selected-resume-text17">
-          <span>Role: {responseRole} </span>
+          <span>Role</span>
           <br></br>
         </span>
         <span className="selected-resume-text20">
-          <span>Major: {responseMajor} </span>
+          <span>Major</span>
           <br></br>
         </span>
         <span className="selected-resume-text23">
-          <span className="selected-resume-text24">Skill 1: {responseSkill1}</span>
+          <span className="selected-resume-text24">Skill 1</span>
           <br></br>
         </span>
         <span className="selected-resume-text26">
-          <span className="selected-resume-text27">Skill 2: {responseSkill2}</span>
+          <span className="selected-resume-text27">Skill 2</span>
           <br></br>
         </span>
         <span className="selected-resume-text29">
-          <span>Introduction: {responseIntro}</span>
+          <span>Introduction</span>
           <br></br>
         </span>
         <span className="selected-resume-text32">
@@ -206,35 +210,38 @@ const SelectedResume = (props) => {
         </span>
         <button type="button" className="selected-resume-button6 button">
           <span>
-            <span>등록</span>
+            <span>참가 제안</span>
             <br></br>
           </span>
         </button>
         <span className="selected-resume-text38">
-          <span>Level: {responseLevel1}</span>
+          <span>Level</span>
           <br></br>
         </span>
         <span className="selected-resume-text41">
-          <span>Level: {responseLevel2} </span>
+          <span>Level</span>
           <br></br>
         </span>
         <span className="selected-resume-text44">
-          <span className="selected-resume-text45">Skill 3: {responseSkill3}</span>
+          <span className="selected-resume-text45">Skill 3</span>
           <br></br>
         </span>
         <span className="selected-resume-text47">
-          <span>Level: {responseLevel3}</span>
+          <span>Level</span>
           <br></br>
         </span>
-        <span className="selected-resume-text50"> </span>
-        <span className="selected-resume-text51"> </span>
-        <span className="selected-resume-text52"> </span>
-        <span className="selected-resume-text53"> </span>
-        <span className="selected-resume-text54"> </span>
-        <span className="selected-resume-text55"> </span>
-        <span className="selected-resume-text56"> </span>
-        <span className="selected-resume-text57"> </span>
-        <span className="selected-resume-text58"> </span>
+        <span className="selected-resume-text50">{responseMajor}</span>
+        <span className="selected-resume-text51">{responseRole}</span>
+        <span className="selected-resume-text52">{responseSkill1}</span>
+        <span className="selected-resume-text53">{responseLevel1}</span>
+        <span className="selected-resume-text54">{responseSkill2}</span>
+        <span className="selected-resume-text55">{responseLevel2}</span>
+        <span className="selected-resume-text56">{responseSkill3}</span>
+        <span className="selected-resume-text57">{responseLevel3}</span>
+        <span className="selected-resume-text58">{responseIntro}</span>
+
+        <span className="selected-notice-email">E-mail</span>
+        <span className="selected-notice-emailtext">roh5651@ajou.ac.kr</span> {/* Email 자리*/}
       </form>
     </div>
   )

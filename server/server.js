@@ -32,14 +32,17 @@ app.post('/api/board/write', (req, res)=>{
 app.get('/api/selected_notice', (req, res)=>{
 
     const object ={
-
+    email: "roh5651@ajou.ac.kr",
     title : "소프트웨어공학 팀원 구합니다.", 
-    role : "engineer", 
-    skill: "java",
-    member: 1,
-    intro: "저는 아주대학교 4학년 2학기를 다니고 있습니다.",
-    period: "2023/3-5월",
-    project: "교내 대회"
+    role : "개발", 
+    skills: "Javascript",
+    membernum: 2,
+    intro: "아주대학교 소프트웨어공학 프로젝트 팀원 모집합니다. 한 학기 동안 열심히 해봅시다.",
+    period: "3개월",
+    projtype: "교내 대회",
+    writedate: "23/12/05",
+    clicknum: 123
+
     }
 
     res.json(object);

@@ -205,17 +205,17 @@ const Noticesearch = (props) => {
       </button>
       <form className="noticesearch-form1" onClick={handleSelectNotice}>
         {/* <span className="noticesearch-text24">Project</span> */}
-        <span className="noticesearch-text25">{responseTitle_1}</span>
+        <span className="noticesearch-text25">아주대 소프트웨어공학 팀원 구합니다.</span>
         {/* <span className="noticesearch-text26">Skills</span> */}
       </form>
       <form className="noticesearch-form2" onClick={handleSelectNotice}>
         {/* <span className="noticesearch-text27">Project</span> */}
-        <span className="noticesearch-text28">{responseTitle_2}</span>
+        <span className="noticesearch-text28">ICT 디바이스 전국 공모전 팀원 구합니다.</span>
         {/* <span className="noticesearch-text29">Skills</span> */}
       </form>
       <form className="noticesearch-form3" onClick={handleSelectNotice}>
         {/* <span className="noticesearch-text30">Project</span> */}
-        <span className="noticesearch-text31">{responseTitle_3}</span>
+        <span className="noticesearch-text31">아주대 캡스톤 팀원 구합니다.</span>
         {/* <span className="noticesearch-text32">Skills</span> */}
       </form>
     </div>

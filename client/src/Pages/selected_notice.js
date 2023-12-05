@@ -33,6 +33,9 @@ const SelectedNotice = (props) => {
   const [responseSkill, setResponseSkill] = useState("");
   const [responseIntroduction, setResponseIntroduction] = useState("");
   const [responsePeriod, setResponsePeriod] = useState("");
+  const [responseEmail, setResponseEmail] = useState("");
+  const [responseWritedate, setResponseWritedate] = useState("");
+  const [responseClicknum, setResponseClicknum] = useState(0);
   const [responseData, setResponseData] = useState(null);
 
   const [showAdditionalResumeButtons, setShowAdditionalResumeButtons] = useState(false);
@@ -46,12 +49,15 @@ const SelectedNotice = (props) => {
       setResponseTitle(response.data.title);
       setResponseRole(response.data.role);
 
-      setResponseSkill(response.data.skill);
+      setResponseSkill(response.data.skills);
       
-      setResponseMember(response.data.member);
+      setResponseMember(response.data.membernum);
       setResponseIntroduction(response.data.intro);
       setResponsePeriod(response.data.period);
-      setResponseProject(response.data.project);
+      setResponseProject(response.data.projtype);
+      setResponseEmail(response.data.email);
+      setResponseWritedate(response.data.writedate);
+      setResponseClicknum(response.data.clicknum);
 
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -199,9 +205,20 @@ const SelectedNotice = (props) => {
           <span>Notice</span>
           <br></br>
         </span>
+
+        <span className="selected-notice-date">
+          <span>Date</span>
+          <br></br>
+        </span>
+
+        <span className="selected-notice-watchcnt">
+          <span>조회수</span>
+          <br></br>
+        </span>
+
         <button type="button" className="selected-notice-button6 button">
           <span>
-            <span>등록</span>
+            <span>참가 요청</span>
             <br></br>
           </span>
         </button>
@@ -220,6 +237,11 @@ const SelectedNotice = (props) => {
         <span className="selected-notice-text51">{responseMember}</span>
         <span className="selected-notice-text52">{responseSkill}</span>
         <span className="selected-notice-text53">{responseIntroduction}</span>
+
+        <span className="selected-notice-datetext">{responseWritedate}</span> {/* date 용 */}
+        <span className="selected-notice-watchtext">{responseClicknum}</span> {/* click num 용 */}
+
+
       </form>
     </div>
   )
