@@ -146,10 +146,26 @@
   font-size: 20px;
   border-color: #ffffff;
 }
+
+
 .home-text21 {
   font-style: normal;
   font-weight: 900;
 }
+
+.home-myproposal {
+  top: 35px;
+  left: 1200px;
+  position: absolute;
+  font-size: 20px;
+  border-color: #ffffff;
+}
+
+.home-myproposaltext {
+  font-style: normal;
+  font-weight: 900;
+}
+
 .home-form1 {
   top: 358px;
   left: 205px;

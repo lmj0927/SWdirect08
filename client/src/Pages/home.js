@@ -25,6 +25,9 @@ const Home = (props) => {
   const handleSelectNotice = () => {
     navigate('/selectedNotice');
   };
+  const handleMyProposal = () => {
+    navigate('/myProposal');
+  };
 
   const [responseRole_1, setResponseRole_1] = useState(null);
   const [responseRole_2, setResponseRole_2] = useState(null);
@@ -168,6 +171,13 @@ const Home = (props) => {
       <button type="button" className="home-button4 button" onClick={handleResumeEnter}>
         <span className="home-text18">
           <span>내 이력서</span>
+          <br></br>
+        </span>
+      </button>
+
+      <button type="button" className="home-myproposal button" onClick={handleMyProposal}>
+        <span className="home-myproposaltext">
+          <span>받은 요청</span>
           <br></br>
         </span>
       </button>

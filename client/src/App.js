@@ -15,6 +15,7 @@ import SelectedNotice from './Pages/selected_notice.js';
 import SelectedResume from './Pages/selected_resume.js';
 import ResumeResult from './Pages/resume_result.js';
 import NoticeResult from './Pages/notice_result.js';
+import MyProposal from './Pages/my_proposal.js';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/selectedResume" element={<SelectedResume />} />
           <Route path="/resumeResult" element={<ResumeResult />} />
           <Route path="/noticeResult" element={<NoticeResult />} />
+          <Route path="/myProposal" element={<MyProposal />} />
           {/* 추가적인 Route 설정 */}
         </Routes>
       </div>
