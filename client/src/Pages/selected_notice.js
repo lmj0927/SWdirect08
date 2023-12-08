@@ -3,6 +3,7 @@ import axios from 'axios'
 import './selected_notice.css'
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import JoinProposalPopup from './join_proposal_popup';
 
 const SelectedNotice = (props) => {
   const navigate = useNavigate();
@@ -107,6 +108,19 @@ const SelectedNotice = (props) => {
     navigate('/notice')
     console.log('Edit clicked');
   };
+
+
+  const [showJoinProposalPopup, setShowJoinProposalPopup] = useState(false);
+
+  const handleJoinProposal = () => {
+    setShowJoinProposalPopup(true);
+  };
+
+  const closeJoinProposalPopup = () => {
+    setShowJoinProposalPopup(false);
+  };
+
+
   return (
     <div className="selected-notice-container">
       <span className="selected-notice-text">Teaming</span>
@@ -216,12 +230,20 @@ const SelectedNotice = (props) => {
           <br></br>
         </span>
 
-        <button type="button" className="selected-notice-button6 button">
+        <button type="button" className="selected-notice-button6 button" onClick={handleJoinProposal}>
           <span>
             <span>참가 요청</span>
             <br></br>
           </span>
         </button>
+
+        {showJoinProposalPopup && (
+        <JoinProposalPopup
+          onClose={closeJoinProposalPopup}
+          // onJoin={}
+        />
+      )}  {/* onJoin 부분에 팝업창에서 참가 요청 버튼 누르면 호출될 함수 넣으시면 됩니다. */}
+
         <span className="selected-notice-text41">
           <span>Title</span>
           <br></br>

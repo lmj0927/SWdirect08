@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './selected_resume.css'
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-
+import JoinProposalPopup from './join_proposal_popup';
 
 const SelectedResume = (props) => {
 
@@ -114,6 +114,21 @@ const SelectedResume = (props) => {
     navigate('/notice')
     console.log('Edit clicked');
   };
+
+
+
+  const [showJoinProposalPopup, setShowJoinProposalPopup] = useState(false);
+
+  const handleJoinProposal = () => {
+    setShowJoinProposalPopup(true);
+  };
+
+  const closeJoinProposalPopup = () => {
+    setShowJoinProposalPopup(false);
+  };
+
+
+
   return (
     <div className="selected-resume-container">
       <span className="selected-resume-text">Teaming</span>
@@ -208,12 +223,22 @@ const SelectedResume = (props) => {
           <span>Resume</span>
           <br></br>
         </span>
-        <button type="button" className="selected-resume-button6 button">
+        <button type="button" className="selected-resume-button6 button" onClick={handleJoinProposal}>
           <span>
             <span>참가 제안</span>
             <br></br>
           </span>
         </button>
+
+
+        {showJoinProposalPopup && (
+        <JoinProposalPopup
+          onClose={closeJoinProposalPopup}
+          // onJoin={}
+        />
+      )}  {/* onJoin 부분에 팝업창에서 참가 요청 버튼 누르면 수행될 함수 넣으시면 될 것 같습니다. */}
+
+      
         <span className="selected-resume-text38">
           <span>Level</span>
           <br></br>
