@@ -20,7 +20,7 @@ const Resume = (props) => {
       navigate('/searchNotice');
     };
 
-    const [Major, setMajor] = useState(" ");
+    const [Major, setMajor] = useState("");
     const [Role, setRole] = useState("기획");
     const [Skill_1, setSkill_1] = useState("");
     const [Skill_2, setSkill_2] = useState("");
@@ -28,7 +28,7 @@ const Resume = (props) => {
     const [Level_1, setLevel_1] = useState("");
     const [Level_2, setLevel_2] = useState("");
     const [Level_3, setLevel_3] = useState("");
-    const [Introduction, setIntroduction] = useState(" ");
+    const [Introduction, setIntroduction] = useState("");
     const [responseData, setResponseData] = useState(null);
 
 
@@ -219,14 +219,14 @@ const Resume = (props) => {
         </span>
         <input
           type="text"
-          placeholder="본인의 역량을 작성해주세요"
+          placeholder="역량을 작성해주세요"
           className="resume-textinput1 input"
           value={Skill_1}
           onChange={(e) => setSkill_1(e.target.value)}
         />
         <input
           type="text"
-          placeholder="본인의 역량을 작성해주세요"
+          placeholder="역량을 작성해주세요"
           className="resume-textinput2 input"
           value={Skill_2}
           onChange={(e) => setSkill_2(e.target.value)}
@@ -282,7 +282,7 @@ const Resume = (props) => {
         </span>
         <input
           type="text"
-          placeholder="본인의 역량을 작성해주세요"
+          placeholder="역량을 작성해주세요"
           className="resume-textinput4 input"
           value={Skill_3}
           onChange={(e) => setSkill_3(e.target.value)}
