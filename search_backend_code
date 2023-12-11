@@ -1,3 +1,4 @@
+```
 // 검색 엔드포인트
 app.post('/api/resume_result', (req, res) => {
   const searchterm = req.query.keyword;
@@ -172,3 +173,4 @@ app.post('/api/notice_result', (req, res) => {
     });
   }
 });
+```
