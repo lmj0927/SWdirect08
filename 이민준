@@ -1,0 +1,174 @@
+// 검색 엔드포인트
+app.post('/api/resume_result', (req, res) => {
+  const searchterm = req.query.keyword;
+  if(searchTerm == "") res.json({code : 404, reason : "검색단어가 없습니다. 검색어를 입력해주세요."}); 
+  else {
+    const query = `SELECT *
+                FROM resume 
+                WHERE email LIKE '%${searchTerm}%' 
+                or major LIKE '%${searchTerm}%' 
+                or role LIKE '%${searchTerm}%' 
+                or skill1 LIKE '%${searchTerm}%' 
+                or skill2 LIKE '%${searchTerm}%'
+                or skill3 LIKE '%${searchTerm}%'
+                or level1 LIKE '%${searchTerm}%'
+                or level2 LIKE '%${searchTerm}%'
+                or level3 LIKE '%${searchTerm}%' 
+                or intro LIKE '%${searchTerm}%'`;
+    connection.query(query, (error, results) => {
+      if (error) throw error;
+      else if(results.length == 0) res.json({code : 404, reason : "검색결과가 없습니다."});
+      console.log(results);
+      res.json(results);
+    });
+  }
+});
+
+
+
+app.post('/api/notice_result', (req, res) => {
+  const searchterm = req.query.keyword;
+  const projtype = req.query.projtype;
+  const sort = req.query.sort;
+  var query;
+  if(searchTerm == "") res.json({code : 404, reason : "검색단어가 없습니다. 검색어를 입력해주세요."});
+  else {
+    if(projtype == null){
+      if(sort == 0){
+        query = `SELECT *
+                    FROM notice 
+                    WHERE email LIKE '%${searchTerm}%'  
+                    or title LIKE '%${searchTerm}%'  
+                    or role LIKE '%${searchTerm}%'
+                    or membernum LIKE '%${searchTerm}%'
+                    or skills LIKE '%${searchTerm}%'
+                    or writedate LIKE '%${searchTerm}%'
+                    or period LIKE '%${searchTerm}%' 
+                    or intro LIKE '%${searchTerm}%'`;
+      }
+      else if(sort == 1){
+        query = `SELECT *
+                    FROM notice 
+                    WHERE email LIKE '%${searchTerm}%'  
+                    or title LIKE '%${searchTerm}%'  
+                    or role LIKE '%${searchTerm}%'
+                    or membernum LIKE '%${searchTerm}%'
+                    or skills LIKE '%${searchTerm}%'
+                    or writedate LIKE '%${searchTerm}%'
+                    or period LIKE '%${searchTerm}%' 
+                    or intro LIKE '%${searchTerm}%'
+                    order by clicknum desc`;
+      }
+      else if(sort ==2){
+        query = `SELECT *
+                    FROM notice 
+                    WHERE email LIKE '%${searchTerm}%'  
+                    or title LIKE '%${searchTerm}%'  
+                    or role LIKE '%${searchTerm}%'
+                    or membernum LIKE '%${searchTerm}%'
+                    or skills LIKE '%${searchTerm}%'
+                    or writedate LIKE '%${searchTerm}%'
+                    or period LIKE '%${searchTerm}%' 
+                    or intro LIKE '%${searchTerm}%'
+                    order by writedate desc`;
+      }
+    }
+    else if(projtype == "교내 대회"){
+      const email = req.query.email;
+      if(sort == 0){
+        query = `SELECT notice.email, wid, title, projtype, role, membernum, skills, writedate, period, intro, clicknum
+                    FROM user NATURAL JOIN notice 
+                    WHERE (university= (select university from user where user.email = "${email}") and projtype = "${projtype}")
+                    or wid LIKE '%${searchTerm}%' 
+                    or title LIKE '%${searchTerm}%'  
+                    or role LIKE '%${searchTerm}%'
+                    or membernum LIKE '%${searchTerm}%'
+                    or skills LIKE '%${searchTerm}%'
+                    or writedate LIKE '%${searchTerm}%'
+                    or period LIKE '%${searchTerm}%' 
+                    or intro LIKE '%${searchTerm}%'`;
+                    
+      }
+      else if(sort == 1){
+        query = `SELECT notice.email, wid, title, projtype, role, membernum, skills, writedate, period, intro, clicknum
+                    FROM user NATURAL JOIN notice 
+                    WHERE (university= (select university from user where user.email = "${email}") and projtype = "${projtype}")
+                    or wid LIKE '%${searchTerm}%' 
+                    or title LIKE '%${searchTerm}%'  
+                    or role LIKE '%${searchTerm}%'
+                    or membernum LIKE '%${searchTerm}%'
+                    or skills LIKE '%${searchTerm}%'
+                    or writedate LIKE '%${searchTerm}%'
+                    or period LIKE '%${searchTerm}%' 
+                    or intro LIKE '%${searchTerm}%'
+                    order by clicknum desc`;
+      }
+      else if(sort == 2){
+        query = `SELECT notice.email, wid, title, projtype, role, membernum, skills, writedate, period, intro, clicknum
+                    FROM user NATURAL JOIN notice 
+                    WHERE (university= (select university from user where user.email = "${email}") and projtype = "${projtype}")
+                    or wid LIKE '%${searchTerm}%' 
+                    or title LIKE '%${searchTerm}%'  
+                    or role LIKE '%${searchTerm}%'
+                    or membernum LIKE '%${searchTerm}%'
+                    or skills LIKE '%${searchTerm}%'
+                    or writedate LIKE '%${searchTerm}%'
+                    or period LIKE '%${searchTerm}%' 
+                    or intro LIKE '%${searchTerm}%'
+                    order by writedate desc`;
+      }
+    }
+    else{
+      if(sort == 0){
+        query = `SELECT *
+                    FROM notice 
+                    WHERE (email LIKE '%${searchTerm}%' 
+                    or wid LIKE '%${searchTerm}%' 
+                    or title LIKE '%${searchTerm}%'  
+                    or role LIKE '%${searchTerm}%'
+                    or membernum LIKE '%${searchTerm}%'
+                    or skills LIKE '%${searchTerm}%'
+                    or writedate LIKE '%${searchTerm}%'
+                    or period LIKE '%${searchTerm}%' 
+                    or intro LIKE '%${searchTerm}%')
+                    and projtype = "${projtype}"`;
+      }
+      else if(sort == 1){
+        query = `SELECT *
+                  FROM notice 
+                  WHERE (email LIKE '%${searchTerm}%' 
+                  or wid LIKE '%${searchTerm}%' 
+                  or title LIKE '%${searchTerm}%'  
+                  or role LIKE '%${searchTerm}%'
+                  or membernum LIKE '%${searchTerm}%'
+                  or skills LIKE '%${searchTerm}%'
+                  or writedate LIKE '%${searchTerm}%'
+                  or period LIKE '%${searchTerm}%' 
+                  or intro LIKE '%${searchTerm}%')
+                  and projtype = "${projtype}"
+                  order by clicknum desc`;
+      }
+      else if(sort == 2){
+        query = `SELECT *
+                  FROM notice 
+                  WHERE (email LIKE '%${searchTerm}%' 
+                  or wid LIKE '%${searchTerm}%' 
+                  or title LIKE '%${searchTerm}%'  
+                  or role LIKE '%${searchTerm}%'
+                  or membernum LIKE '%${searchTerm}%'
+                  or skills LIKE '%${searchTerm}%'
+                  or writedate LIKE '%${searchTerm}%'
+                  or period LIKE '%${searchTerm}%' 
+                  or intro LIKE '%${searchTerm}%')
+                  and projtype = "${projtype}"
+                  order by writedate desc`;
+      }
+    }
+    connection.query(query, (error, results) => {
+      if (error) throw error;
+      else if(results.length == 0) res.json({code : 404, reason : "검색결과가 없습니다."});
+      console.log(results);
+      res.json(results);
+    });
+  }
+});
