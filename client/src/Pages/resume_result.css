@@ -226,9 +226,32 @@
   border-color: #7ab1ff;
   border-width: 1px;
 }
+.resume-result-box{
+  top: 340px;
+  left: 0px;
+  right: 0px;
+  width: 699px;
+  height: 800px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+.resume-result-item {
+  width: 100%;
+  max-width: 699px;
+  height: 116px;
+  margin: 10px auto; /* Adjust margin for spacing and centering */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  box-shadow: 5px 5px 10px 0px #7ab1ff;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
 .resume-result-text23 {
-  top: 40px;
-  left: 80px;
+  left: 130px;
   color: rgb(0, 102, 255);
   width: var(--dl-size-size-large);
   height: var(--dl-size-size-small);
@@ -237,9 +260,8 @@
   text-align: center;
 }
 .resume-result-text24 {
-  top: 40px;
-  left: 0px;
   color: rgb(0, 102, 255);
+  left: 80px;
   right: 0px;
   width: var(--dl-size-size-large);
   height: var(--dl-size-size-small);
@@ -249,7 +271,6 @@
   text-align: center;
 }
 .resume-result-text25 {
-  top: 40px;
   color: rgb(0, 102, 255);
   right: 80px;
   width: var(--dl-size-size-large);
@@ -323,6 +344,55 @@
   font-size: 60px;
   border-color: #ffffff;
 }
+
+.sort-dropdown {
+  top:250px;
+  left:150px;
+  display: inline-block;
+  position: absolute;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+
+.dropdown button {
+  background-color: white;
+  border: 1px solid #7ab1ff;
+  color: #7ab1ff;
+  padding: 10px;
+  cursor: pointer;
+  width:90px;
+}
+
+.sort-options {
+  display: none;
+  position: absolute;
+  overflow: auto;
+  background-color:#fff;
+  border-radius:5px;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+}
+
+.dropdown:hover .sort-options {
+  display: block;
+}
+
+.sort-options a {
+  display: block;
+  color: #000000;
+  padding: 5px;
+  text-decoration: none;
+  /* padding:20px 40px; */
+  font-size:10px;
+  width:110px;
+}
+
+.sort-options a:hover {
+  color: #0a0a23;
+  background-color: #ddd;
+  border-radius:5px;
+}
+
+
 @media(max-width: 1200px) {
   .resume-result-text {
     top: 32px;

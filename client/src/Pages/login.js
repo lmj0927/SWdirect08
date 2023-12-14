@@ -2,43 +2,38 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import './login.css'
 import { useNavigate } from 'react-router-dom';
-
+ 
 const Login = (props) => {
 
-  const [Email, setEmail] = useState(" ");
-  const [Password, setPassword] = useState(" ");
-  const [responseData, setResponseData] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-
+  
   const callApi = async () => {
     try {
-      const requestBody = {Email, Password};
-      const response = await axios.post("/api/login",  requestBody , {
+      const requestBody = {email, password};
+      const response = await axios.post("/api/login_process",  requestBody , {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       });
-
-      console.log(response.status);
-      setResponseData(response.data);
+     
+     if(response.data.code == 202) {
+      console.log(response.data);
+      navigate('/home', {state: email}); }
+      else console.log(response.data.reason)
 
     } catch (error) {
       console.error('Error in API call:', error);
     }
+
   };
 
-  const handleLogin = async () => {
-    try {
-      
-      callApi();
 
-      navigate('/home');
-
-    } catch (error) {
-      console.error('Error during login:', error);
-    }
+  const handleHome = () => {
+    callApi();
   };
 
   const handleJoin = () => {
@@ -58,10 +53,11 @@ const Login = (props) => {
           id="email"
           className="login-textinput input"
           placeholder="ID"
-          value={Email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail
+        (e.target.value)}
           />
-          <button type="submit" className="login-button button" onClick={handleLogin}>
+          <button type="button" className="login-button button" onClick={ handleHome }>
             Login
           </button>
           <input
@@ -69,10 +65,10 @@ const Login = (props) => {
           id="password"
           className="login-textinput1 input"
           placeholder="Password"
-          value={Password}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit" className="login-button1 button" onClick={handleJoin}>
+          <button type="button" className="login-button1 button" onClick={ handleJoin }>
             <span>
               <span>Join</span>
               <br></br>

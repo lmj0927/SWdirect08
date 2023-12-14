@@ -317,6 +317,47 @@
   font-size: 25px;
   text-align: center;
 }
+.resume-result-box{
+  top: 340px;
+  left: 0px;
+  right: 0px;
+  width: 699px;
+  height: 800px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+.resume-result-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.resume-result-item {
+  width: 100%;
+  max-width: 699px;
+  height: 116px;
+  margin: 10px auto; /* Adjust margin for spacing and centering */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  box-shadow: 5px 5px 10px 0px #7ab1ff;
+  border-color: #7ab1ff;
+  border-width: 1px;
+}
+.resume-result-text23 {
+  left: 130px;
+  color: rgb(0, 102, 255);
+  width: var(--dl-size-size-large);
+  height: var(--dl-size-size-small);
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
 @media(max-width: 1200px) {
   .resumesearch-text {
     top: 32px;

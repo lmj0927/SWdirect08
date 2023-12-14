@@ -1,0 +1,463 @@
+.my-proposal-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+  }
+  .my-proposal-text {
+    top: 17px;
+    left: 35px;
+    color: rgb(0, 102, 255);
+    width: var(--dl-size-size-medium);
+    height: auto;
+    position: absolute;
+    font-size: 40px;
+    font-style: italic;
+    text-align: center;
+    font-family: "Inter";
+    font-weight: 300;
+    line-height: 40px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .my-proposal-text01 {
+    top: 60px;
+    left: 13px;
+    color: rgb(0, 102, 255);
+    width: var(--dl-size-size-xxlarge);
+    height: auto;
+    position: absolute;
+    font-size: 22px;
+    font-style: italic;
+    text-align: center;
+    font-family: "Inter";
+    font-weight: 300;
+    line-height: 40px;
+    font-stretch: normal;
+    text-decoration: none;
+  }
+  .my-proposal-footer {
+    left: 123px;
+    width: 100%;
+    bottom: 38px;
+    display: flex;
+    position: absolute;
+    max-width: var(--dl-size-size-maxwidth);
+    align-items: center;
+    padding-top: var(--dl-space-space-twounits);
+    padding-left: var(--dl-space-space-threeunits);
+    padding-right: var(--dl-space-space-threeunits);
+    padding-bottom: var(--dl-space-space-twounits);
+    justify-content: flex-end;
+  }
+  .my-proposal-text02 {
+    top: 29px;
+    left: 536px;
+    position: absolute;
+  }
+  .my-proposal-text03 {
+    top: 230px;
+    left: 0px;
+    color: #0066ff;
+    right: 0px;
+    width: 311px;
+    height: 51px;
+    margin: auto;
+    position: absolute;
+  }
+  .my-proposal-form {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    position: absolute;
+    align-self: center;
+    border-color: var(--dl-color-gray-black);
+    border-style: groove;
+    border-width: 2px;
+  }
+  .my-proposal-button {
+    top: 35px;
+    left: 450px;
+    position: absolute;
+    border-color: #ffffff;
+  }
+  .my-proposal-text06 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+  }
+  .my-proposal-button1 {
+    top: 37px;
+    color: #ffffff;
+    right: 60px;
+    width: 123px;
+    height: 56px;
+    position: absolute;
+    font-size: 20px;
+    background-color: #000000;
+  }
+  .my-proposal-button2 {
+    top: 35px;
+    left: 534px;
+    position: absolute;
+    border-color: #ffffff;
+  }
+  .my-proposal-text12 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+  }
+  .my-proposal-button3 {
+    top: 35px;
+    left: 690px;
+    position: absolute;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+    border-color: #ffffff;
+  }
+  .my-proposal-button4 {
+    top: 35px;
+    left: 877px;
+    position: absolute;
+    font-size: 20px;
+    border-color: #ffffff;
+  }
+  .my-proposal-text15 {
+    font-style: normal;
+    font-weight: 900;
+  }
+  .my-proposal-button5 {
+    top: 35px;
+    left: 1027px;
+    position: absolute;
+    font-size: 20px;
+    border-color: #ffffff;
+  }
+  .my-proposal-text18 {
+    font-style: normal;
+    font-weight: 900;
+  }
+  .my-proposal-text21 {
+    top: 40px;
+    left: 80px;
+    color: rgb(0, 102, 255);
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-text22 {
+    top: 40px;
+    left: 0px;
+    color: rgb(0, 102, 255);
+    right: 0px;
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    margin: auto;
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-text23 {
+    top: 40px;
+    color: rgb(0, 102, 255);
+    right: 80px;
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-form2 {
+    top: 340px;
+    left: 0px;
+    right: 0px;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    position: absolute;
+    box-shadow: 5px 5px 10px 0px #7ab1ff;
+    border-color: #7ab1ff;
+    border-width: 1px;
+  }
+  .my-proposal-text24 {
+    top: 40px;
+    left: 80px;
+    color: rgb(0, 102, 255);
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-text25 {
+    top: 40px;
+    left: 0px;
+    color: rgb(0, 102, 255);
+    right: 0px;
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    margin: auto;
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-text26 {
+    top: 40px;
+    color: rgb(0, 102, 255);
+    right: 80px;
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-form3 {
+    top: 340px;
+    /* left: 0px; */
+    right: 100px;
+    width: 400px;
+    height: 500px;
+    /* margin: auto; */
+    display: flex;
+    position: absolute;
+    box-shadow: 5px 5px 10px 0px #7ab1ff;
+    border-color: #7ab1ff;
+    border-width: 1px;
+  }
+  .my-proposal-text27 {
+    top: 40px;
+    left: 80px;
+    color: rgb(0, 102, 255);
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-text28 {
+    top: 40px;
+    left: 0px;
+    color: rgb(0, 102, 255);
+    right: 0px;
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    margin: auto;
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-text29 {
+    top: 40px;
+    color: rgb(0, 102, 255);
+    right: 80px;
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .proposal1,
+  .proposal2,
+  .proposal3 {
+    top: 100px;
+    left: 0px;
+    right: 0px;
+    width: 300px;
+    height: 250px;
+    margin: auto;
+    position: absolute;
+    font-size: 20px;
+
+    background-color: #d1e4ff;
+    /* border: 2px solid #7ab1ff;
+    border-top: solid #ffffff; */
+    display: flex;
+    /* align-items:  */
+    /* justify-content: center; */
+    text-align: left;
+  
+    /* border-style: dashed; */
+  }
+  .proposal1-reject22{
+    /* left: 0px; */
+    color: #ffffff;
+    right: 70px;
+    width: 120px;
+    bottom: 70px;
+    height: 50px;
+    /* margin: auto; */
+    position: absolute;
+    font-size: 20px;
+    background-color: #7ab1ff;
+    border-color: #7ab1ff;
+    padding-right: var(--dl-space-space-halfunit);
+  }
+  .my-proposal-form122 {
+    /* right: 0px; */
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    margin: 10px auto; /* Adjust margin for spacing and centering */
+
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    box-shadow: 5px 5px 10px 0px #7ab1ff;
+    border-color: #7ab1ff;
+    border-width: 1px;
+  }
+  .proposal1-accept22{
+    /* left: 0px; */
+    color: #7ab1ff;
+    left: 100px;
+    width: 120px;
+    bottom: 100px;
+    height: 50px;
+    /* margin: auto; */
+    position: absolute;
+    font-size: 20px;
+    border-color: #7ab1ff;
+    padding-right: var(--dl-space-space-halfunit);
+
+  }
+  .resume-result-item {
+    width: 100%;
+    max-width: 699px;
+    height: 116px;
+    margin: 10px auto; /* Adjust margin for spacing and centering */
+    
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    box-shadow: 5px 5px 10px 0px #7ab1ff;
+    border-color: #7ab1ff;
+    border-width: 1px;
+  }
+  .resume-result-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+  }
+  .request-result-box{
+    top: 300px;
+    left: 0px;
+    right: 0px;
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+    display: flex;
+    position: absolute;
+    border-color: #7ab1ff;
+    border-width: 1px;
+  }
+  .request-result-text23 {
+    left: 53px;
+    color: rgb(0, 102, 255);
+    width: 400px;
+    height: 100px;
+    background-color: #d1e4ff;
+    margin: auto;
+    position: absolute;
+    font-size: 20px;
+    text-align: left;
+    display: flex;
+  }
+  .my-proposal-text22 {
+    left: 0px;
+    color: rgb(0, 102, 255);
+    right: 0px;
+    width: var(--dl-size-size-large);
+    height: var(--dl-size-size-small);
+    margin: auto;
+    position: absolute;
+    font-size: 25px;
+    text-align: center;
+  }
+  .my-proposal-form1 {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 280px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 10px 0px #7ab1ff;
+    border-color: #7ab1ff;
+    border-width: 1px;
+  }
+  .proposal1-accept {
+    left: 70px;
+    color: #7ab1ff;
+    width: 120px;
+    height: 50px;
+    bottom: 27px;
+    margin-top: 10px; 
+    position: absolute;
+    font-size: 20px;
+    border-color: #7ab1ff;
+    padding-right: var(--dl-space-space-halfunit);
+  }
+  .proposal1-reject {
+    left: 315px;
+    color: #7ab1ff;
+    width: 120px;
+    height: 50px;
+    bottom: 27px;
+    margin-top: 10px; 
+    position: absolute;
+    font-size: 20px;
+    border-color: #7ab1ff;
+    padding-right: var(--dl-space-space-halfunit);
+  }
+  @media(max-width: 1200px) {
+    .my-proposal-text {
+      top: 32px;
+      left: 60px;
+    }
+    .my-proposal-text01 {
+      top: 32px;
+      left: 60px;
+    }
+    .my-proposal-button1 {
+      top: 37px;
+      right: 82px;
+      position: absolute;
+    }
+  }
+  @media(max-width: 767px) {
+    .my-proposal-footer {
+      padding-left: var(--dl-space-space-twounits);
+      padding-right: var(--dl-space-space-twounits);
+    }
+    .my-proposal-text02 {
+      text-align: center;
+      margin-left: var(--dl-space-space-unit);
+      margin-right: var(--dl-space-space-unit);
+    }
+  }
+  @media(max-width: 479px) {
+    .my-proposal-footer {
+      padding: var(--dl-space-space-unit);
+      flex-direction: column;
+    }
+    .my-proposal-text02 {
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-bottom: var(--dl-space-space-unit);
+    }
+  }
+  

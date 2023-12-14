@@ -1,7 +1,5 @@
 // App.js
 import React from 'react';
-import axios from "axios";
-import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './Pages/login.js';
@@ -16,18 +14,13 @@ import SelectedNotice from './Pages/selected_notice.js';
 import SelectedResume from './Pages/selected_resume.js';
 import ResumeResult from './Pages/resume_result.js';
 import NoticeResult from './Pages/notice_result.js';
+import OtherSelectedResume from './Pages/other_selected_resume.js';
+import Mynotices from './Pages/mynotices.js';
+import MyProposal from './Pages/my_proposal.js';
+import OtherSelectedNotice from './Pages/other_selected_notice.js';
+import ModifyNotice from './Pages/modify_notice.js';
 
 function App() {
-
-
-const callApi = async()=>{
-    axios.get("/api").then((res)=>{console.log(res.data.test)});
-};
-
-useEffect(()=>{
-    callApi();
-  }, []);
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -44,6 +37,12 @@ useEffect(()=>{
           <Route path="/selectedResume" element={<SelectedResume />} />
           <Route path="/resumeResult" element={<ResumeResult />} />
           <Route path="/noticeResult" element={<NoticeResult />} />
+          <Route path="/otherselectedResume" element={<OtherSelectedResume />} />
+          <Route path="/otherselectedNotice" element={<OtherSelectedNotice />} />
+          <Route path="/mynotices" element={<Mynotices />} />
+          <Route path="/myProposal" element={<MyProposal />} />
+          <Route path="/modifyNotice" element={<ModifyNotice />} />
+
           {/* 추가적인 Route 설정 */}
         </Routes>
       </div>
@@ -52,7 +51,3 @@ useEffect(()=>{
 }
 
 export default App;
-
-
-
-

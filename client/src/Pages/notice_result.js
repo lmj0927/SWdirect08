@@ -1,41 +1,274 @@
-import React from 'react'
-
+import React, { useState, useEffect} from 'react';
 import './notice_result.css'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const NoticeResult = (props) => {
+
   const navigate = useNavigate();
+  //location.state[0] -> 키워드 , location.state[1] -> email
+  const location = useLocation();
+  
+  const [Keyword, setKeyword] = useState("")
+  const [Projtype, setProjtype] = useState(null)
+  const [Sort, setSort] = useState(0)
+
+  const [noticeNum, setNoticeNum] = useState(null);
+  const [noticeList, setNoticeList] = useState(null);
+
+  const callApi = async()=>{
+    try {    
+      const response = await axios.get("/api/notice_result",
+      {params: {keyword: location.state[0] , projtype: null, sort: 0, email: location.state[1]} },
+      { withCredentials: true } );
+
+      setNoticeNum(response.data.length);
+      setNoticeList(response.data);
+     
+      if(response.data.code == 404)
+      { console.log(response.data.reason); 
+        setNoticeNum(0);}
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+  };
+
+  /*분류 정렬 안하고 걍 다시 정렬 */
+  const callApi2 = async()=>{
+    try {;
+      location.state[0] = Keyword;
+      const response = await axios.get("/api/notice_result",
+      {params: {keyword: location.state[0], projtype: null, sort: 0, email: location.state[1]} },
+      { withCredentials: true } );
+      console.log(Keyword);
+      setNoticeNum(response.data.length);
+      setNoticeList(response.data);
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+
+  /*공모전 분류*/
+  const callApi3 = async()=>{
+    try {
+ 
+      const response = await axios.get("/api/notice_result",
+      {params: {keyword: location.state[0], projtype:"공모전", sort: Sort, email: location.state[1]} },
+      { withCredentials: true } );
+      console.log(Sort);
+      setNoticeNum(response.data.length);
+      setNoticeList(response.data);
+
+      if(response.data.code == 404)
+      { console.log(response.data.reason); 
+        setNoticeNum(0);}
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+   /*교내 대회 분류*/
+   const callApi4 = async()=>{
+    try {
+      const response = await axios.get("/api/notice_result",
+      {params: {keyword: location.state[0], projtype:"교내 대회", sort: Sort, email: location.state[1]} },
+      { withCredentials: true } );
+      console.log(Sort);
+      setNoticeNum(response.data.length);
+      setNoticeList(response.data);
+
+      if(response.data.code == 404)
+      { console.log(response.data.reason); 
+        setNoticeNum(0);}
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  /*조회순 정렬*/
+  const callApi5 = async()=>{
+    try {
+      const response = await axios.get("/api/notice_result",
+      {params: {keyword: location.state[0], projtype: Projtype, sort: 1, email: location.state[1]} },
+      { withCredentials: true } );
+      console.log(Projtype);
+      setNoticeNum(response.data.length);
+      setNoticeList(response.data);
+
+      if(response.data.code == 404)
+      { console.log(response.data.reason); 
+        setNoticeNum(0);}
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  /*최신순 정렬 */
+  const callApi6 = async()=>{
+    try {
+      const response = await axios.get("/api/notice_result",
+      {params: {keyword: location.state[0], projtype: Projtype, sort: 2, email: location.state[1]} },
+      { withCredentials: true } );
+      console.log(Projtype);
+      setNoticeNum(response.data.length);
+      setNoticeList(response.data);
+
+      if(response.data.code == 404)
+      { console.log(response.data.reason); 
+        setNoticeNum(0);}
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+    /*스터디 분류 */
+    const callApi7 = async()=>{
+      try {
+        const response = await axios.get("/api/notice_result",
+        {params: {keyword: location.state[0], projtype: "스터디", sort: Sort, email: location.state[1]} },
+        { withCredentials: true } );
+        console.log(Sort);
+        setNoticeNum(response.data.length);
+        setNoticeList(response.data);
+  
+        if(response.data.code == 404)
+        { console.log(response.data.reason); 
+          setNoticeNum(0);}
+  
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    /*교내 수업 분류 */
+    const callApi9 = async()=>{
+      try {
+        const response = await axios.get("/api/notice_result",
+        {params: {keyword: location.state[0], projtype: "교내 수업", sort: Sort, email: location.state[1]} },
+        { withCredentials: true } );
+        console.log(Sort);
+        setNoticeNum(response.data.length);
+        setNoticeList(response.data);
+  
+        if(response.data.code == 404)
+        { console.log(response.data.reason); 
+          setNoticeNum(0);}
+  
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+
+    /*이력서 있는지 확인*/
+    const callApi10 = async()=>{
+      try {
+        var uemail = location.state[1];
+  
+        const response = await axios.get("/api/hasresume",{params: {email: uemail}},
+        { withCredentials: true } );
+  
+        console.log(response.data);
+  
+        if(response.data == 0) //이력서 최초 등록 안했으면
+        {navigate('/resume', {state: location.state[1]});} //이력서 등록하러 가기
+        else {navigate('/selectedResume', {state: location.state[1]});} //이력서 등록한 유저면 본인꺼 바로 보기
+  
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
   const handleLogout = () => {
     navigate('/');
   };
+
   const handleHome = () => {
-    navigate('/home');
+   navigate('/home', { state: location.state[1] } );
   };
+
   const handleSearchResume = () => {
-    navigate('/searchResume');
+    navigate('/searchResume', { state: location.state[1] } );
   };
+
   const handleSearchNotice = () => {
-    navigate('/searchNotice');
+    navigate('/searchNotice', { state: location.state[1] } );
   };
-  const handleResume = () => {
-    navigate('/resume');
+ 
+  const handleSelectNotice = (index) => {
+    navigate('/otherselectedNotice',
+    { state: [noticeList[index].wid, location.state[1]] });
   };
-  const handleNotice = () => {
-    navigate('/notice');
-  };
-  const handleSelectNotice = () => {
-    navigate('/selectedNotice');
-  };
+
+  useEffect(()=>{
+    callApi();
+  }, []);
+
   const handleNoticeResult = () => {
-    navigate('/noticeResult');
+    callApi2();
+    setProjtype(null);
+    setSort(0);
   };
-  const handleNextPage = () => {
-    navigate('/resumeResult');
+
+
+  const handleResumeEnter = () => {
+    
+    callApi10();
+    
   };
-  const handlePrevPage = () => {
-    navigate('/resumeResult');
+
+  const handleNoticeEnter = () => {
+    navigate('/mynotices', {state: location.state[1]});
   };
+
+  /*분류 관련 event handler*/
+  const handleAllresults = () => {
+    callApi();
+  };
+  
+  const handleCampusClass = () => {
+    callApi9();
+    setProjtype("교내 수업");
+  };
+
+  const handleCampusContest = () => {
+    callApi4();
+    setProjtype("교내 대회");
+  };
+
+  const handleGongmojun = () => {
+    callApi3();
+    setProjtype("공모전");
+  };
+
+  /*const handleOuterContest = () => {
+    callApi8();
+    setProjtype("외부 대회");
+  };*/
+
+  const handleStudy = () => {
+    callApi7();
+    setProjtype("스터디");
+  };
+
+  /*정렬 관련 event handler*/
+  const handleClickSort = () => {
+    callApi5();
+    setSort(1);
+  };
+
+  const handleWriteDate = () => {
+    callApi6();
+    setSort(2);
+  };
+
+
   return (
     <div className="notice-result-container">
       <span className="notice-result-text">Teaming</span>
@@ -63,37 +296,34 @@ const NoticeResult = (props) => {
       <button type="button" className="notice-result-button3 button" onClick={handleSearchNotice}>
         모집 공고 검색
       </button>
-      <button type="button" className="notice-result-button4 button" onClick={handleResume}>
+      <button type="button" className="notice-result-button4 button" onClick={handleResumeEnter}>
         <span className="notice-result-text11">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
-      <button type="button" className="notice-result-button5 button" onClick={handleNotice}>
+      <button type="button" className="notice-result-button5 button" onClick={handleNoticeEnter}>
         <span className="notice-result-text14">
           <span>내 모집 공고</span>
           <br></br>
         </span>
       </button>
       <input
-        type="text"
-        placeholder="이력서 키워드를 입력하세요"
-        className="notice-result-textinput input"
-      />
-      <form className="notice-result-form1" onClick={handleSelectNotice}>
-        <span className="notice-result-text17">Project</span>
-        <span className="notice-result-text18">Role</span>
-        <span className="notice-result-text19">Skills</span>
-      </form>
-      <form className="notice-result-form2" onClick={handleSelectNotice}>
-        <span className="notice-result-text20">Project</span>
-        <span className="notice-result-text21">Role</span>
-        <span className="notice-result-text22">Skills</span>
-      </form>
-      <form className="notice-result-form3" onClick={handleSelectNotice}>
-        <span className="notice-result-text23">Project</span>
-        <span className="notice-result-text24">Role</span>
-        <span className="notice-result-text25">Skills</span>
+          type="text"
+          id="keyword"
+          className="notice-result-textinput input"
+          placeholder="모집 공고 키워드를 입력하세요"
+          value={Keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+      <form className="resume-result-box" >
+            <div className="resume-result-container">
+              {Array.from({ length: noticeNum || 0 }, (_, index) => (
+                <div key={index} className="resume-result-item"onClick={() => handleSelectNotice(index)}>
+                  <span className="resume-result-text23"> {noticeList[index].title}</span>
+                </div>
+              ))}
+            </div>
       </form>
       <button type="button" className="notice-result-button6 button" onClick={handleNoticeResult}>
         <span className="notice-result-text26">
@@ -103,7 +333,7 @@ const NoticeResult = (props) => {
       </button>
       <footer className="notice-result-footer">
         <span className="notice-result-text29">
-          © 2023 Teaming, All Rights Reserved.
+    
         </span>
         <div className="notice-result-icon-group">
           <svg
@@ -126,12 +356,25 @@ const NoticeResult = (props) => {
           </svg>
         </div>
       </footer>
-      <button type="button" className="notice-result-button7 button" onClick={handlePrevPage}>
-        ◀
-      </button>
-      <button type="button" className="notice-result-button8 button" onClick={handleNextPage}>
-        ▶
-      </button>
+<div class="dropdown" className="project-class dropdown">
+    <button>프로젝트 유형</button>
+    <div class="dropdown-options" className="project-options dropdown-options">
+        <a href="javascript:void(0)" onClick={handleAllresults}>전체</a>
+        <a href="javascript:void(0)" onClick={handleCampusClass}>교내 수업</a>
+        <a href="javascript:void(0)" onClick={handleCampusContest}>교내 대회</a>
+        <a href="javascript:void(0)" onClick={handleGongmojun}>공모전</a>
+       {/*} <a href="javascript:void(0)" onClick={handleOuterContest}>외부 대회</a>*/}
+        <a href="javascript:void(0)" onClick={handleStudy}>스터디</a>
+    </div>
+</div>
+      <div class="dropdown" className="sort-dropdown dropdown">
+        <button>정렬</button>
+        <div class="dropdown-options" className="sort-options dropdown-options">
+          <a href="javascript:void(0)" onClick={handleClickSort}>조회순</a>
+          <a href="javascript:void(0)" onClick={handleWriteDate}>최신순</a>
+        </div>
+      </div>
+      
     </div>
   )
 }

@@ -1,47 +1,103 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import './search_notice.css'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const Noticesearch = (props) => {
+
+  const location = useLocation();
+  
+  const [Keyword, setKeyword] = useState("");
+  const [noticeNum, setNoticeNum] = useState(null);
+  const [noticeList, setNoticeList] = useState(null);
+
   const navigate = useNavigate();
+
+  const callApi = async()=>{
+    try {
+      const response = await axios.get("/api/allnotice",
+      { withCredentials: true } );
+
+      setNoticeNum(response.data.length);
+      setNoticeList(response.data);
+
+      if(response.data.code == 404)
+      { console.log(response.data.reason); }
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+
+  };
+
+  const callApi2 = async()=>{
+    try {
+      var uemail = location.state;
+      const response = await axios.get("/api/hasresume",{params: {email: uemail}},
+      { withCredentials: true } );
+
+      if(response.data == 0) //이력서 최초 등록 안했으면
+      {navigate('/resume', location);} //이력서 등록하러 가기
+      else {navigate('/selectedResume', location);} //이력서 등록한 유저면 본인꺼 바로 보기
+
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(()=>{
+    callApi();
+  }, []);
+
 
   const handleLogout = () => {
     navigate('/');
   };
   const handleHome = () => {
-    navigate('/home');
+    navigate('/home', location);
   };
   const handleSearchResume = () => {
-    navigate('/searchResume');
+    navigate('/searchResume', location);
   };
   const handleSearchNotice = () => {
-    navigate('/searchNotice');
+    navigate('/searchNotice', location);
   };
-  const handleResume = () => {
-    navigate('/resume');
+
+  const handleSelectNotice = (index) => {
+    navigate('/otherselectedNotice',
+    { state: [noticeList[index].wid, location.state] } );
+
   };
-  const handleNotice = () => {
-    navigate('/notice');
-  };
-  const handleSelectNotice = () => {
-    navigate('/selectedNotice');
-  };
+
   const handleNoticeResult = () => {
-    navigate('/noticeResult');
+    navigate('/noticeResult', { state: [ Keyword, location.state]});
   };
+
+  const handleResumeEnter = () => {
+    callApi2();
+  };
+
+  const handleNoticeEnter = () => {
+    navigate('/mynotices', location);
+  };
+
+
   return (
     <div className="noticesearch-container">
       <input
-        type="text"
-        placeholder="모집 공고 키워드를 입력하세요"
-        className="noticesearch-textinput input"
-      />
+          type="text"
+          id="keyword"
+          className="noticesearch-textinput input"
+          placeholder="모집 공고 키워드를 입력하세요"
+          value={Keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />  
       <span className="noticesearch-text">Teaming</span>
       <span className="noticesearch-text01">효율적인 팀 매칭 서비스</span>
       <footer className="noticesearch-footer">
         <span className="noticesearch-text02">
-          © 2023 Teaming, All Rights Reserved.
+         
         </span>
         <div className="noticesearch-icon-group">
           <svg
@@ -64,7 +120,7 @@ const Noticesearch = (props) => {
           </svg>
         </div>
       </footer>
-      <h1 className="noticesearch-text03">
+      <h1 className="new-noticesearch-text03 ">
         <span>새로 등록된 모집 공고</span>
         <br></br>
       </h1>
@@ -91,13 +147,13 @@ const Noticesearch = (props) => {
       <button type="button" className="noticesearch-button3 button" onClick={handleSearchNotice}>
         모집 공고 검색
       </button>
-      <button type="button" className="noticesearch-button4 button" onClick={handleResume}>
+      <button type="button" className="noticesearch-button4 button" onClick={handleResumeEnter}>
         <span className="noticesearch-text15">
           <span>내 이력서</span>
           <br></br>
         </span>
       </button>
-      <button type="button" className="noticesearch-button5 button" onClick={handleNotice}>
+      <button type="button" className="noticesearch-button5 button" onClick={handleNoticeEnter}>
         <span className="noticesearch-text18">
           <span>내 모집 공고</span>
           <br></br>
@@ -109,21 +165,17 @@ const Noticesearch = (props) => {
           <br></br>
         </span>
       </button>
-      <form className="noticesearch-form1" onClick={handleSelectNotice}>
-        <span className="noticesearch-text24">Project</span>
-        <span className="noticesearch-text25">Role</span>
-        <span className="noticesearch-text26">Skills</span>
-      </form>
-      <form className="noticesearch-form2" onClick={handleSelectNotice}>
-        <span className="noticesearch-text27">Project</span>
-        <span className="noticesearch-text28">Role</span>
-        <span className="noticesearch-text29">Skills</span>
-      </form>
-      <form className="noticesearch-form3" onClick={handleSelectNotice}>
-        <span className="noticesearch-text30">Project</span>
-        <span className="noticesearch-text31">Role</span>
-        <span className="noticesearch-text32">Skills</span>
-      </form>
+      <form className="resume-result-box">
+            <div className="resume-result-container">
+              {Array.from({ length: noticeNum || 0 }, (_, index) => (
+                <div key={index} className="resume-result-item"onClick={() => handleSelectNotice(index)}>
+                  <span className="resume-result-text23"> {noticeList[index].title}</span>
+                   {/*<span className="resume-result-text24">{resumeList[index].major}</span>
+                  <span className="resume-result-text25">{resumeList[index].role}</span> */}
+                </div>
+              ))}
+            </div>
+          </form>
     </div>
   )
 }
